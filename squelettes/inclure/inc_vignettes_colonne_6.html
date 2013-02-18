@@ -1,0 +1,17 @@
+<B_documents_portfolio>
+<br />
+
+<div class="bloc clearfix" id="documents_portfolio">
+	<ul>
+     <BOUCLE_documents_portfolio(DOCUMENTS) {id_article} {mode=document}{extension IN png,jpg,gif} {par num titre, date}{doublons}{vu=non}>[
+		<li><a class="cboxElement hasbox" href="(#URL_DOCUMENT)" type="#MIME_TYPE" onclick="">[(#FICHIER
+			|image_passe_partout{130,130}
+			|image_recadre{130,130}
+			|inserer_attribut{class,spip_logos}
+			|inserer_attribut{alt,[(#TITRE|attribut_html|couper{80})]})]</a></li>
+		]</BOUCLE_documents_portfolio>
+	</ul>
+</div>
+
+</B_documents_portfolio>
+

@@ -1,0 +1,109 @@
+<BOUCLE_principale(RUBRIQUES) {id_rubrique}>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+[(#REM) Cf.: http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/
+]<!--[if lt IE 7 ]> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js ie ie6"> <![endif]-->
+<!--[if IE 7 ]> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js ie ie7"> <![endif]-->
+<!--[if IE 8 ]> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js ie ie8"> <![endif]-->
+<!--[if IE 9 ]> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js ie ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js"> <!--<![endif]-->
+<head>
+<script type='text/javascript'>/*<![CDATA[*/(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement);/*]]>*/</script>
+<title>[(#TITRE|couper{80}|textebrut|supprimer_numero) - ][(#NOM_SITE_SPIP|textebrut)]</title>
+[<meta name="description" content="(#INTRODUCTION{150}|textebrut)" />]
+[<link rel="canonical" href="(#URL_RUBRIQUE|url_absolue)" />]
+<INCLURE{fond=inclure/head} />
+[(#REM) Lien vers le flux RSS des articles la rubrique ]
+<link rel="alternate" type="application/rss+xml" title="<:syndiquer_rubrique:>" href="[(#URL_PAGE{backend}|parametre_url{id_rubrique,#ID_RUBRIQUE})]" />
+
+<link href="#CHEMIN{design/css_renovas.css}" rel="stylesheet" type="text/css" media="all" />
+[(#INCLURE{fond=inclure/inc-java_scripts, env})][(#REM) javascripts etc ]
+
+
+<!--[if IE]>
+    <link type="text/css" rel="stylesheet" href="squelettes/design/ie.css" />
+<![endif]-->
+
+<script type="text/javascript">
+$(document).ready(function() {
+	
+	/********************************************************************************************************************
+	SIMPLE ACCORDIAN STYLE MENU FUNCTION
+	********************************************************************************************************************/	
+	$('div.accordionButton_conseil_renov').click(function() {
+		$("div.accordionButton_conseil_renov").css({'background-image' : 'url(squelettes/design/fleche_home_ferme.png)'}); /* RAZ */
+		$('div.accordionContent_conseil_reno').slideUp('normal');	
+		$(this).css({'background-image' : 'url(squelettes/design/fleche_home_ouvert.png)'}); /* RAZ */
+		$(this).next().slideDown('normal');
+	});
+	
+	/********************************************************************************************************************
+	CLOSES ALL DIVS ON PAGE LOAD
+	********************************************************************************************************************/	
+	$("div.accordionContent_conseil_reno").hide();
+
+
+ $(".accordion_bg_alpha").animate({"opacity": "0.8"}, 0);
+});
+</script>
+
+
+
+
+
+
+</head>
+<body>
+ <div id="outer_container">
+  [(#INCLURE{fond=inclure/inc-en_tete_#LANG, env})][(#REM) menu de l'en-tête ]
+
+	<div id="fil_ariane">
+     <BOUCLE_ariane(HIERARCHIE){id_rubrique}{id_rubrique}> &gt; <a href="#URL_RUBRIQUE">[(#TITRE|couper{80})]</a></BOUCLE_ariane>[ &gt; <strong class="on">(#TITRE|couper{80})</strong>]
+    </div>
+    
+    
+
+
+    <div id="corps_rubr_conseil_renov">
+ 
+    <div class="ligne_page_sur_titre"> </div>
+
+     <BOUCLE_titre_rubr(RUBRIQUES) {id_rubrique=25}>
+     <h1 class="liste_page_cq_titre_1">[(#TITRE|supprimer_numero)]</h1>
+     </BOUCLE_titre_rubr>
+  
+
+    <div id="menu_accordeon_home">
+
+	   <BOUCLE_article_menu_accordeon(ARTICLES) {id_rubrique=25} {par num titre}>
+		[<div class="accordionButton_conseil_renov">(#TITRE|supprimer_numero)</div>]
+        <div style="display: none;" class="accordionContent_conseil_reno">
+             <div class="accordion_txt_zone_conseil_renov">
+              [<div class="#EDIT{chapo} chapo surlignable">(#CHAPO|image_reduire{400,*})</div>]
+              [<div class="#EDIT{texte} texte surlignable">(#TEXTE|image_reduire{400,*})</div>]
+              <br class="float_stop" />
+        	  [(#INCLURE{fond=inclure/documents,id_article, env})] [(#REM) Gestion du portfolio et des documents ]
+             </div></div>
+	   </BOUCLE_article_menu_accordeon>
+
+    </div>
+
+
+
+
+
+
+
+    
+    
+
+
+
+   <!-- Pied de page -->
+   [(#INCLURE{fond=inclure/inc-footer_#LANG, env})]
+
+ </div><!-- #outer_container -->
+
+</body>
+</html>
+</BOUCLE_principale>[(#INCLURE{fond=404, erreur=<:aucune_rubrique:>})]
+<//B_principale>

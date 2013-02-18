@@ -1,0 +1,35 @@
+  <div id="head_container">
+   <div id="head_container_gauche">
+     <a href="spip.php?rubrique<multi>[fr]1[nl]2</multi>" class="back_home" title="<:accueil_site:>"></a> 
+   </div> <!-- #head_container_gauche -->
+   
+   <div id="head_container_droite">
+    <div id="ligne_head_1"><a href="spip.php?rubrique25">Conseil en rénovation</a> <a href="spip.php?rubrique27">Réseau Habitat</a> <a href="spip.php?rubrique26">Prêt Frce</a> <a href="spip.php?rubrique271">News</a></div>
+    <div id="recherche_zone">#FORMULAIRE_RECHERCHE</div>
+    
+    <div id="ligne_head_2"><a href="spip.php?rubrique3">Contrats de quartierS durableS</a> </div>
+    <div id="ligne_head_3"><a href="spip.php?rubrique264">Carte interactive de Schaerbeek</a> </div>
+    
+    <div id="ligne_head_4"><a href="spip.php?rubrique31">Qui est RenovaS ?</a> <a href="spip.php?rubrique32">Contact</a> <a href="spip.php?rubrique33">Liens utiles</a> <a href="spip.php?rubrique34">Offres d'emploi</a> </div>
+    <div id="boutons_header">   
+     <a href="#" onclick="imprime(); return false" title="Imprimer la page" class="bouton_imprime"> </a>
+     <div class="bouton_resize"><a href="#" class="decreaseFont" title="Réduire">A</a> <a class="resetFont">-</a> <a href="#" class="increaseFont" title="Augmenter">A</a></div>
+	
+    <!-- Choix de la langues -->
+    <div id="bouton_langues">
+	<B_art_traduits_unique>	
+	<BOUCLE_art_traduits_unique(ARTICLES) {id_trad > 0} {id_rubrique} {par lang}{0,1}>
+	 <BOUCLE_trad_unique(ARTICLES) {traduction} >  [(#REM) ajouter critère {exclus} ]
+	  <BOUCLE_rub_unique(RUBRIQUES) {id_rubrique} {doublons}>
+    	<a href="[(#URL_RUBRIQUE)]" title="[(#LANG|traduire_nom_langue)]" <multi>[fr] class="bouton_langue_fr">FR[nl] class="bouton_langue_nl">NL</multi></a></span>
+	  </BOUCLE_rub_unique>
+	 </BOUCLE_trad_unique>
+	</BOUCLE_art_traduits_unique>
+	</B_art_traduits_unique>
+	<//B_art_traduits_unique>
+    </div>
+
+    </div> <!-- #boutons_header -->
+    
+   </div> <!-- #head_container_droite -->
+  </div> <!-- #head_container -->
