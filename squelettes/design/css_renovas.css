@@ -329,6 +329,104 @@ div#outer_container {
 }
 
 
+/*Couleurs par contrats quartier*/
+
+.racine_cq_5 ul.menu li a, .racine_cq_5  ul.menu ul.menu li a, .racine_cq_5  ul.menu li a.myomya  
+.racine_cq_15 ul.menu li a, .racine_cq_15  ul.menu ul.menu li a, .racine_cq_15  ul.menu li a.myomya  
+{
+	background-color:#F0CA02;"
+}
+.racine_cq_6 ul.menu li a, .racine_cq_6  ul.menu ul.menu li a, .racine_cq_6 ul.menu li a.myomya  
+.racine_cq_16 ul.menu li a, .racine_cq_16  ul.menu ul.menu li a, .racine_cq_16 ul.menu li a.myomya  
+{
+	background-color:#65B3C9;"
+}
+.racine_cq_7 ul.menu li a, .racine_cq_7  ul.menu ul.menu li a, .racine_cq_7  ul.menu li a.myomya  
+.racine_cq_17 ul.menu li a, .racine_cq_17  ul.menu ul.menu li a, .racine_cq_17  ul.menu li a.myomya  
+{
+	background-color:#BFCE16;"
+}
+.racine_cq_8 ul.menu li a, .racine_cq_8  ul.menu ul.menu li a, .racine_cq_8  ul.menu li a.myomya  
+.racine_cq_18 ul.menu li a, .racine_cq_18  ul.menu ul.menu li a, .racine_cq_18  ul.menu li a.myomya  
+{
+	background-color:#CE0281;"
+}
+.racine_cq_9 ul.menu li a, .racine_cq_9  ul.menu ul.menu li a, .racine_cq_9  ul.menu li a.myomya  
+.racine_cq_19 ul.menu li a, .racine_cq_19  ul.menu ul.menu li a, .racine_cq_19  ul.menu li a.myomya  
+{
+	background-color:#2B8250;"
+}
+.racine_cq_10ul.menu li a, .racine_cq_10  ul.menu ul.menu li a, .racine_cq_10 ul.menu li a.myomya  
+.racine_cq_20ul.menu li a, .racine_cq_20  ul.menu ul.menu li a, .racine_cq_20 ul.menu li a.myomya  
+{
+	background-color:#DC324A;"
+}
+.racine_cq_11 ul.menu li a, .racine_cq_11  ul.menu ul.menu li a, .racine_cq_11  ul.menu li a.myomya  
+.racine_cq_21 ul.menu li a, .racine_cq_21  ul.menu ul.menu li a, .racine_cq_21  ul.menu li a.myomya  
+{
+	background-color:#0966DC;"
+}
+.racine_cq_12 ul.menu li a, .racine_cq_12  ul.menu ul.menu li a, .racine_cq_12  ul.menu li a.myomya  
+.racine_cq_22 ul.menu li a, .racine_cq_22  ul.menu ul.menu li a, .racine_cq_22  ul.menu li a.myomya  
+{
+	background-color:#FF7503;"
+}
+.racine_cq_13ul.menu li a, .racine_cq_13  ul.menu ul.menu li a, .racine_cq_13  ul.menu li a.myomya  
+.racine_cq_23ul.menu li a, .racine_cq_23  ul.menu ul.menu li a, .racine_cq_23  ul.menu li a.myomya  
+{
+	background-color:#50B111;"
+}
+.racine_cq_14 ul.menu li a, .racine_cq_14  ul.menu ul.menu li a, .racine_cq_14  ul.menu li a.myomya  
+.racine_cq_24 ul.menu li a, .racine_cq_24  ul.menu ul.menu li a, .racine_cq_24  ul.menu li a.myomya  
+{
+	background-color:#7F65BA;"
+}
+
+
+
+.racine_cq_5 h3, .racine_cq_15 h3
+{
+	color:#F0CA02;
+}
+.racine_cq_6 h3, .racine_cq_16 h3
+{
+	color:#65B3C9;
+}
+.racine_cq_7 h3, .racine_cq_17 h3 
+{
+	color:#BFCE16;
+}
+.racine_cq_8 h3, .racine_cq_18 h3 
+{
+	color:#CE0281;
+}
+.racine_cq_9 h3, .racine_cq_19 h3 
+{
+	color:#2B8250;
+}
+.racine_cq_10 h3, .racine_cq_20 h3 
+{
+	color:#DC324A;
+}
+.racine_cq_11 h3, .racine_cq_21 h3  
+{
+	color:#0966DC;
+}
+.racine_cq_12 h3, .racine_cq_22 h3 
+{
+	color:#FF7503;
+}
+.racine_cq_13 h3, .racine_cq_23 h3 
+{
+	color:#50B111;
+}
+.racine_cq_14 h3, .racine_cq_24 h3 
+{
+	color:#7F65BA;
+}
+
+
+
 #ligne_au_dessus_titre {
 	float:left;
 	width:193px;
