@@ -1018,3 +1018,8 @@ table td, table th {
 .formulaire_formidable {
 	width:350px;
 }
+
+/*Map*/
+html.map, html.map body{width:100%;height:100%; margin:0;padding:0}
+
+html.map div.map,html.map div#map1{width:100%;height:100%; margin:0;padding:0; }

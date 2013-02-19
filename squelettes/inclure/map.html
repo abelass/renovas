@@ -1,5 +1,5 @@
 #SET{kml,#ARRAY}
-<BOUCLE_art(ARTICLES){id_rubrique}>
+<BOUCLE_art(ARTICLES){id_rubrique ?}>
     <BOUCLE_kml(DOCUMENTS){id_article}{tout}{extension=kml}>
     #SET{kml,#GET{kml}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#ID_DOCUMENT}}}
     </BOUCLE_kml>
@@ -11,4 +11,8 @@
     id_rubrique,
     kml=#GET{kml},
     fullscreen=oui,
+    hauteur,
+    zoom,
+    centrer_auto=oui,
+    centrer_fichier=oui, 
     id_mot})]
