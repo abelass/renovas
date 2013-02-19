@@ -12,11 +12,8 @@
 			[(#LOGO_GIS|oui)
 			[(#SET{logo_doc,#LOGO_GIS|image_passe_partout{25,41}|image_recadre{25,41}})]]
 			[(#LOGO_GIS|non)
-    			
     			    [(#SET{logo_doc,#CHEMIN{images/marker#GET{operation}.png}|image_passe_partout{25,41}|image_recadre{25,41}})]
-
 			]
-
 			[(#GET{logo_doc}|oui)
 			#SET{icon_w,#GET{logo_doc}|extraire_attribut{src}|largeur}
 			#SET{icon_h,#GET{logo_doc}|extraire_attribut{src}|hauteur}
