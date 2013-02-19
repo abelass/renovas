@@ -1,0 +1,14 @@
+#SET{kml,#ARRAY}
+<BOUCLE_art(ARTICLES){id_rubrique}>
+    <BOUCLE_kml(DOCUMENTS){id_article}{tout}{extension=kml}>
+    #SET{kml,#GET{kml}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#ID_DOCUMENT}}}
+    </BOUCLE_kml>
+</BOUCLE_art>
+
+
+[(#INCLURE{fond=modeles/carte_gis,
+    objets=articles,
+    id_rubrique,
+    kml=#GET{kml},
+    fullscreen=oui,
+    id_mot})]

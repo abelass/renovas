@@ -1,5 +1,5 @@
     [(#REM) TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
-    Afficher le diapo si mot clé = "Diaporama" ]
+    Afficher le diapo si mot clÃ© = "Diaporama" ]
  	<BOUCLE_test_afficher_diapo (RUBRIQUES){id_rubrique}{id_mot=2}>
      <div id="gallery" class="ad-gallery">
       <div class="ad-image-wrapper"></div>
@@ -36,7 +36,7 @@
 
 
     [(#REM) TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
-     Afficher le logo si mot clé = "Logo de l'ARTICLE" ]
+     Afficher le logo si mot clÃ© = "Logo de l'ARTICLE" ]
  	<BOUCLE_test_afficher_logo (RUBRIQUES){id_rubrique}{id_mot=3}>
 		[<div id="logo_article_haut_page">(#LOGO_RUBRIQUE|
         |image_reduire{547,547}
@@ -47,7 +47,7 @@
 
 
     [(#REM) TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
-     Afficher le logo si mot clé = "Google Map" ]
+     Afficher le logo si mot clÃ© = "Google Map" ]
  	<BOUCLE_test_afficher_map (RUBRIQUES){id_rubrique}{id_mot=1}>
-		<div id="map_haut_page"><img src="templates/temp_carte_547.jpg" /></div>
+		<div id="map_haut_page"><INCLURE{fond=inclure/map,id_rubrique,env}/></div>
 	</BOUCLE_test_afficher_map>
