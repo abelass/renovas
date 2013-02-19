@@ -1,8 +1,5 @@
-<BOUCLE_principale(RUBRIQUES) {id_rubrique}>
-
-
+<BOUCLE_principale(RUBRIQUES) {id_rubrique}{id_trad!=264}>
 #SET{defaut,oui}
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 [(#REM) Cf.: http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/
 ]<!--[if lt IE 7 ]> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js ie ie6"> <![endif]-->
@@ -17,7 +14,7 @@
 [<link rel="canonical" href="(#URL_RUBRIQUE|url_absolue)" />]
 <INCLURE{fond=inclure/head} />
 [(#REM) Lien vers le flux RSS des articles la rubrique ]
-<link rel="alternate" type="appli       cation/rss+xml" title="<:syndiquer_rubrique:>" href="[(#URL_PAGE{backend}|parametre_url{id_rubrique,#ID_RUBRIQUE})]" />
+<link rel="alternate" type="application/rss+xml" title="<:syndiquer_rubrique:>" href="[(#URL_PAGE{backend}|parametre_url{id_rubrique,#ID_RUBRIQUE})]" />
 
 <link href="#CHEMIN{design/css_renovas.css}" rel="stylesheet" type="text/css" media="all" />
 [(#INCLURE{fond=inclure/inc-java_scripts, env})][(#REM) javascripts etc ]
@@ -35,8 +32,6 @@ var galleries = $('.ad-gallery').adGallery({
 </script>
 <!-- #Diapo -->
 ]
-
-[<link rel="stylesheet" href="(#URL_PAGE{css_en_fonction_rubrique.css,id_rubrique=#ENV{id_rubrique}})" type="text/css" media="all" />] [(#REM) modif CSS en fonction de rubrique]
 
 [(#ID_TRAD|=={25}|oui)
 <script type="text/javascript">
@@ -102,5 +97,6 @@ $(document).ready(function() {
 
 </body>
 </html>
-</BOUCLE_principale>[(#INCLURE{fond=404, erreur=<:aucune_rubrique:>})]
+</BOUCLE_principale>
+    <INCLURE{fond=map,env,id_rubrique}/>
 <//B_principale>
