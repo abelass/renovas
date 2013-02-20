@@ -24,10 +24,16 @@
      [<div class="menu">
          (#FORMULAIRE_MAP)
      </div>]
+     #SET{id_rubrique,#ARRAY}
+     <BOUCLE_cq(RUBRIQUES){id_rubrique IN #ENV{cq}}>
+        #SET{id_rubrique,#GET{id_rubrique}|push{#ID_RUBRIQUE}}
+     </BOUCLE_cq>
      <div class="map" style="height:100%;width:100%;">
          #SET{id_mot,#ENV{id_mot}}
          [(#ENV{perimetre}|oui)#SET{id_mot,#ENV{perimetre}}]
-         <INCLURE{fond=inclure/map,id_rubrique='',hauteur=100%,env,zoom=14}/>
+         #SET{id_rubrique,#GET{id_rubrique}|implode{-}}
+         #GET{id_rubrique}
+         <INCLURE{fond=inclure/map,id_rubrique=#GET{id_rubrique},hauteur=100%,env,zoom=14}/>
      </div>
 </body>
 </html>
