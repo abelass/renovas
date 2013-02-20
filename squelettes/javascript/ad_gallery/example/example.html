@@ -1,0 +1,216 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="../lib/jquery.ad-gallery.css">
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script type="text/javascript" src="../lib/jquery.ad-gallery.js"></script>
+  <script type="text/javascript">
+  $(function() {
+var galleries = $('.ad-gallery').adGallery({
+  width: false, // Width of the image, set to false and it will read the CSS width
+  height: false,   // Height of the image, set to false and it will read the CSS height
+  thumb_opacity: 1, // (1 removes fade effect)
+
+  // Whether or not the url hash should be updated to the current image
+  update_window_hash: true, 
+  animate_first_image: false,
+
+  animation_speed: 550, 
+  // Can you navigate by clicking on the left/right on the image?
+  display_next_and_prev: true, 
+  // Are you allowed to scroll the thumb list?
+  display_back_and_forward: true, 
+  // If 0, it jumps the width of the container
+  scroll_jump: 0, 
+  slideshow: {
+    enable: true,
+    autostart: true,
+    speed: 4000,
+    start_label: 'Start',
+    stop_label: 'Stop',
+    // Should the slideshow stop if the user scrolls the thumb list?
+    stop_on_scroll: true, 
+    // Wrap around the countdown
+    countdown_prefix: '(', 
+    countdown_sufix: ')',
+    onStart: function() {
+      // Do something wild when the slideshow starts
+    },
+    onStop: function() {
+      // Do something wild when the slideshow stops
+    }
+  },
+  // or 'slide-vert', 'resize', 'fade', 'none' or false
+  effect: 'slide-hori', 
+  // Move to next/previous image with keyboard arrows?
+  enable_keyboard_move: true, 
+  // If set to false, you can't go from the last image to the first, and vice versa
+  cycle: true, 
+  // All hooks has the AdGallery objects as 'this' reference
+  hooks: {
+    // If you don't want AD Gallery to handle how the description
+    // should be displayed, add your own hook. The passed image
+    // image object contains all you need
+  /*  displayDescription: function(image) {
+      alert(image.title +" - "+ image.desc);
+    }*/
+  },
+  // All callbacks has the AdGallery objects as 'this' reference
+  callbacks: {
+    // Executes right after the internal init, can be used to choose which images
+    // you want to preload
+    init: function() {
+      // preloadAll uses recursion to preload each image right after one another
+      this.preloadAll();
+      // Or, just preload the first three
+      this.preloadImage(0);
+      this.preloadImage(1);
+      this.preloadImage(2);
+    },
+    // This gets fired right after the new_image is fully visible
+    afterImageVisible: function() {
+      // For example, preload the next image
+      var context = this;
+      this.loading(true);
+      this.preloadImage(this.current_index + 1,
+        function() {
+          // This function gets executed after the image has been loaded
+          context.loading(false);
+        }
+      );
+
+      // Want slide effect for every other image?
+      if(this.current_index % 2 == 0) {
+        this.settings.effect = 'slide-hori';
+      } else {
+        this.settings.effect = 'fade';
+      }
+    },
+    // This gets fired right before old_image is about to go away, and new_image
+    // is about to come in
+    beforeImageVisible: function(new_image, old_image) {
+      // Do something wild!
+    }
+  }
+});
+
+// Set image description
+some_img.data('ad-desc', 'This is my description!');
+
+// Change effect on the fly
+galleries[0].settings.effect = 'fade';   
+  });
+</script>
+
+  <style type="text/css">
+  * {
+    font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Verdana, Arial, sans-serif;
+    color: #333;
+    line-height: 140%;
+  }
+  select, input, textarea {
+    font-size: 1em;
+  }
+  body {
+    padding: 30px;
+    font-size: 70%;
+    width: 800px;
+  }
+  h2 {
+    margin-top: 1.2em;
+    margin-bottom: 0;
+    padding: 0;
+    border-bottom: 1px dotted #dedede;
+  }
+  h3 {
+    margin-top: 1.2em;
+    margin-bottom: 0;
+    padding: 0;
+  }
+  .example {
+    border: 1px solid #CCC;
+    background: #f2f2f2;
+    padding: 10px;
+  }
+  ul {
+    list-style-image:url(list-style.gif);
+  }
+  pre {
+    font-family: "Lucida Console", "Courier New", Verdana;
+    border: 1px solid #CCC;
+    background: #f2f2f2;
+    padding: 10px;
+  }
+  code {
+    font-family: "Lucida Console", "Courier New", Verdana;
+    margin: 0;
+    padding: 0;
+  }
+
+  #gallery {
+    padding: 30px;
+    background: #e1eef5;
+  }
+  #descriptions {
+    position: relative;
+    height: 50px;
+    background: #EEE;
+    margin-top: 10px;
+    width: 640px;
+    padding: 10px;
+    overflow: hidden;
+  }
+    #descriptions .ad-image-description {
+    }
+      #descriptions .ad-image-description .ad-description-title {
+        display: block;
+      }
+  </style>
+  <title>A demo of AD Gallery - Coffeescripter.com</title>
+</head>
+<body>
+  <div id="container">
+    <h1>AD Gallery, gallery plugin for jQuery</h1>
+    <p>A highly customizable gallery plugin for jQuery.</p>
+    <p>Read more here: <a href="http://coffeescripter.com/2009/07/ad-gallery-a-jquery-gallery-plugin/" target="_blank">http://coffeescripter.com/2009/07/ad-gallery-a-jquery-gallery-plugin/</a> | <a href="http://coffeescripter.com/code/">More code at Coffeescripter.com</a></p>
+
+    <div id="gallery" class="ad-gallery">
+      <div class="ad-image-wrapper">
+      </div>
+      <div class="ad-controls">
+      </div>
+      <div class="ad-nav">
+        <div class="ad-thumbs">
+          <ul class="ad-thumb-list">
+
+            <li>
+              <a href="images/1.jpg">
+                <img src="images/thumbs/t1.jpg" longdesc="1 a nice, and incredibly descriptive, descript a nice, and incredibly descriptive, descript a nice, and incredibly descriptive, descript a nice, and incredibly descriptive, descript" alt="1 Ponite iam gladios hebetes: pugnetur acutis ; Nec dubito, telis quin petar ipse meis. Dum cadit in laqueos captus quoque nuper amator, Solum se thalamos speret habere tuos. Postmodo rivalem partitaque foedera lecti Sentiat: has artes tolle, senescet amor. Tum bene fortis equus reserato carcere currit, Cum quos praetereat quosque sequatur habet."  class=""/>
+              </a>
+            </li>
+            
+            <li>
+              <a href="images/2.jpg">
+                <img src="images/thumbs/t2.jpg" longdesc="2 a nice, and incredibly descriptive, descript a nice, and incredibly descriptive, descript a nice, and incredibly descriptive, descript a nice, and incredibly descriptive, descript" alt="2 Ponite iam gladios hebetes: pugnetur acutis ; Nec dubito, telis quin petar ipse meis. Dum cadit in laqueos captus quoque nuper amator, Solum se thalamos speret habere tuos. Postmodo rivalem partitaque foedera lecti Sentiat: has artes tolle, senescet amor. Tum bene fortis equus reserato carcere currit, Cum quos praetereat quosque sequatur habet."  class=""/>
+              </a>
+            </li>
+            
+            <li>
+              <a href="images/3.jpg">
+                <img src="images/thumbs/t3.jpg" longdesc="3 a nice, and incredibly descriptive, descript a nice, and incredibly descriptive, descript a nice, and incredibly descriptive, descript a nice, and incredibly descriptive, descript" alt="3 Ponite iam gladios hebetes: pugnetur acutis ; Nec dubito, telis quin petar ipse meis. Dum cadit in laqueos captus quoque nuper amator, Solum se thalamos speret habere tuos. Postmodo rivalem partitaque foedera lecti Sentiat: has artes tolle, senescet amor. Tum bene fortis equus reserato carcere currit, Cum quos praetereat quosque sequatur habet."  class=""/>
+              </a>
+            </li>
+            
+      
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="descriptions">
+
+    </div>
+
+  </div>
+</body>
+</html>

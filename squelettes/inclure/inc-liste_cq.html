@@ -1,0 +1,15 @@
+<BOUCLE_niveler(RUBRIQUES){id_trad=#ENV{racine_cq}}{lang}>
+    <BOUCLE_enfant(RUBRIQUES){id_enfant}{id_trad==3}>
+        <B_liste_cq_fr>   
+        <div id="cq_box_deroulante">Contrats de Quartiers Durables</div>
+    	<div id="cq_deroule">
+    	  <div class="cq_qu_est_ce">Qu'est-ce que c'est ?</div>
+    	  <BOUCLE_liste_cq_fr(RUBRIQUES) {id_parent} {par num titre}>
+    		<div class="liste_cq liste_cq_#ID_RUBRIQUE"><a href="#URL_RUBRIQUE " title="[(#TITRE|supprimer_numero)]">[(#TITRE|supprimer_numero)]</a></div>
+    	  </BOUCLE_liste_cq_fr>
+    	</div>
+         </B_liste_cq_fr>
+    </BOUCLE_enfant>
+        &nbsp;
+     <//B_enfant>     
+</BOUCLE_niveler>

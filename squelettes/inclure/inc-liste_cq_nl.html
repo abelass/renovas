@@ -1,0 +1,7 @@
+    <div id="cq_box_deroulante">Duurzaam wijkcontract</div>
+	<div id="cq_deroule">
+	  <div class="cq_qu_est_ce">Wat is het ?</div>
+	  <BOUCLE_liste_cq_nl(RUBRIQUES) {id_parent=4} {par num titre}>
+		<div class="liste_cq liste_cq_#ID_RUBRIQUE"><a href="#URL_RUBRIQUE " title="[(#TITRE|supprimer_numero)]">[(#TITRE|supprimer_numero)]</a></div>
+	  </BOUCLE_liste_cq_nl>
+	</div>

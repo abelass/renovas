@@ -1,0 +1,21 @@
+   <ul class="menu">
+    <BOUCLE_rubriques(RUBRIQUES){id_rubrique}>
+     <BOUCLE_rubrique_parent(RUBRIQUES){meme_parent}{par num titre, titre}>
+      <B_si_plusieurs_articles>
+       <li[ class="(#EXPOSE)"]> <a href="#" class="myomya">[(#TITRE|couper{80}|supprimer_numero)]</a>
+        <ul class="acitem">
+         <BOUCLE_si_plusieurs_articles(ARTICLES){id_rubrique}{1,1}>
+
+         <BOUCLE_affiche_les_articles(ARTICLES){id_rubrique}{par num titre, titre}>
+           <li><a href="#URL_ARTICLE">[(#TITRE|couper{80}|supprimer_numero)]</a></li> <!-- s'il y a plusieurs articles, afficher leur titre à ce niveau ci -->
+         </BOUCLE_affiche_les_articles>
+         
+         </BOUCLE_si_plusieurs_articles>
+        </ul>
+        </li>
+        </B_si_plusieurs_articles>
+        <li><a href="#URL_RUBRIQUE">[(#TITRE|couper{80}|supprimer_numero)]</a></li>
+       <//B_si_plusieurs_articles>
+     </BOUCLE_rubrique_parent>
+    </BOUCLE_rubriques>
+   </ul> &nbsp;<!-- #Menu accordeon CQ -->
