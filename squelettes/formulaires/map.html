@@ -1,0 +1,32 @@
+<div class='formulaire_spip formulaire_editer formulaire_#FORM formulaire_#FORM'>
+	[<p class="reponse_formulaire reponse_formulaire_ok">(#ENV**{message_ok})</p>]
+	[<p class="reponse_formulaire reponse_formulaire_erreur">(#ENV*{message_erreur})</p>]
+
+[(#ENV{cq}|serialize)]
+	<form method='get' action='#ENV{action}'><div>
+		#ACTION_FORMULAIRE{#ENV{action}}
+		<fieldset>
+		<legend><:abus:signaler_abus_form:></legend>
+		<ul>
+		    <li>
+		        <label for="cq"><:choisir_cq:></label>
+		        
+		        <BOUCLE_cq(RUBRIQUES){id_trad=3}{lang}>
+		          <BOUCLE_contrats(RUBRIQUES){id_parent}{par num titre,titre}>
+		          <div class="choix">
+                    <input id="cq_#ID_RUBRIQUE" class="checkbox" type="checkbox" value="#ID_RUBRIQUE" name="cq[]"
+                    [(#ID_RUBRIQUE|in_array{#ENV{cq}}|oui)checked="checked"]/><label for="cq_#ID_RUBRIQUE">#TITRE</label>
+                </div>
+		          </BOUCLE_contrats>
+		        </BOUCLE_cq>
+		        
+		    </li>
+		[(#SAISIE{selection,perimetre,label=<:perimetre:>,id_mot})]
+		</ul>
+		</fieldset>
+		[(#REM) ajouter les saisies supplementaires : extra et autre, a cet endroit ]
+		<!--extra-->
+		<p class="boutons"><input type='submit' class='submit' value='<:bouton_enregistrer:>' /></p>
+	</div></form>
+
+</div>

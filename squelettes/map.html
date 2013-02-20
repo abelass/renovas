@@ -21,15 +21,14 @@
 [(#REM) modif CSS en fonction de rubrique]
 </head>
 <body>
-
      [<div class="menu">
          (#FORMULAIRE_MAP)
      </div>]
      <div class="map" style="height:100%;width:100%;">
+         #SET{id_mot,#ENV{id_mot}}
+         [(#ENV{perimetre}|oui)#SET{id_mot,#ENV{perimetre}}]
          <INCLURE{fond=inclure/map,id_rubrique='',hauteur=100%,env,zoom=14}/>
      </div>
-
-
 </body>
 </html>
 </BOUCLE_principale>
