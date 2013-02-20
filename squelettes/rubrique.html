@@ -26,7 +26,7 @@
 <script type="text/javascript">
 $(function() {
 var galleries = $('.ad-gallery').adGallery({
-	/* Codes spécifiques pour diapo */
+    /* Codes spécifiques pour diapo */
    });
 });
 </script>
@@ -66,7 +66,7 @@ $(document).ready(function() {
  <div id="outer_container">
   [(#INCLURE{fond=inclure/inc-en_tete,id_rubrique,lang})][(#REM) menu de l'en-tête ]
 
-	<div id="fil_ariane">
+    <div id="fil_ariane">
      <BOUCLE_ariane(HIERARCHIE){id_rubrique}{id_rubrique}> &gt; <a href="#URL_RUBRIQUE">[(#TITRE|couper{80})]</a></BOUCLE_ariane>[ &gt; <strong class="on">(#TITRE|couper{80})</strong>]
     </div>
     
