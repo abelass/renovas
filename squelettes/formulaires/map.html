@@ -8,16 +8,16 @@
 		<legend><:abus:signaler_abus_form:></legend>
 		<ul>
 		    <li>
-		        <label for="cq"><:choisir_cq:></label>
+		        <label for="recherche"><:choisir_recherche:></label>
 		        
-		        <BOUCLE_cq(RUBRIQUES){id_trad=3}{lang}>
+		        <BOUCLE_recherche(RUBRIQUES){id_trad=3}{lang}>
 		          <BOUCLE_contrats(RUBRIQUES){id_parent}{par num titre,titre}>
 		          <div class="choix">
-                    <input id="cq_#ID_RUBRIQUE" class="checkbox" type="checkbox" value="#ID_RUBRIQUE" name="cq[]"
-                    [(#ID_RUBRIQUE|in_array{#ENV{cq}}|oui)checked="checked"]/><label for="cq_#ID_RUBRIQUE">#TITRE</label>
+                    <input id="cq#ID_RUBRIQUE" class="checkbox" type="checkbox" value="#ID_RUBRIQUE" name="cq[]"
+                    [(#ID_RUBRIQUE|in_array{#ENV{recherche}}|oui)checked="checked"]/><label for="cq#ID_RUBRIQUE">#TITRE</label>
                 </div>
 		          </BOUCLE_contrats>
-		        </BOUCLE_cq>
+		        </BOUCLE_recherche>
 		        
 		    </li>
 		[(#SAISIE{selection,perimetre,label=<:perimetre:>,id_mot})]

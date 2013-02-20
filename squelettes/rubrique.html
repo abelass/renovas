@@ -19,7 +19,7 @@
 <link href="#CHEMIN{design/css_renovas.css}" rel="stylesheet" type="text/css" media="all" />
 [(#INCLURE{fond=inclure/inc-java_scripts, env})][(#REM) javascripts etc ]
 
-[(#ID_TRAD|=={259}|non)
+[(#ID_TRAD|=={1}|non)
 <!-- Diapo -->
 <link rel="stylesheet" type="text/css" href="#CHEMIN{javascript/ad_gallery_pour_cq/jquery.ad-gallery_547.css}">
 <script type="text/javascript" src="#CHEMIN{javascript/ad_gallery_pour_cq/jquery.ad-gallery.js}"></script>
@@ -57,7 +57,7 @@ $(document).ready(function() {
 });
 </script>
 ]
-[(#ID_TRAD|=={259}|oui)
+[(#ID_TRAD|=={1}|oui)
     <INCLURE{fond=inclure/inc-javascript_home}/>
 ]
 
@@ -80,7 +80,7 @@ $(document).ready(function() {
     #SET{defaut,''}
 ]
 
-[(#ID_TRAD|=={259}|oui)
+[(#ID_TRAD|=={1}|oui)
     <INCLURE{fond=inclure/corps_rubr_home,env,titre,id_rubrique,id_trad}/>
     #SET{defaut,''}
 ]

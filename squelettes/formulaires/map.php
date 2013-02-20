@@ -3,7 +3,7 @@
 if (!defined('_ECRIRE_INC_VERSION')) return;
 
 function formulaires_map_charger_dist(){
-    $valeurs=array('cq'=>'');
+    $valeurs=array('cq'=>'','op'=>'');
     return $valeurs;
 }
 ?>

@@ -1,5 +1,5 @@
-#SET{id_rubrique,#ENV{id_rubrique}|explode{"-"}}
-<BOUCLE_art(ARTICLES){gis}{id_article ?}{id_rubrique}{id_secteur ?}{id_mot ?}{id_auteur ?}{recherche ?}{lang}{0, #ENV{limit}}{","}>
+#SET{id_rubrique,#ENV{recherche}|explode{p}}
+<BOUCLE_art(ARTICLES){gis}{id_article ?}{id_rubrique IN 53}{id_secteur ?}{id_mot ?}{id_auteur ?}{0, #ENV{limit}}{","}>
 		#SET{operation,_defaut}
 		<BOUCLE_rub_mot(MOTS){id_rubrique}{id_groupe=2}>
 		  #SET{operation,_#ID_MOT}
