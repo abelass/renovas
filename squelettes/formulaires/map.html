@@ -4,17 +4,15 @@
 
 	<form method='get' action='#ENV{action}'><div>
 		#ACTION_FORMULAIRE{#ENV{action}}
-		<fieldset>
-		<legend><:abus:signaler_abus_form:></legend>
 		<ul>
 		    <li>
-		        <label for="recherche"><:choisir_recherche:></label>
+		        <label for="recherche"><:choisir_cq:></label>
 		        
 		        <BOUCLE_recherche(RUBRIQUES){id_trad=3}{lang}>
 		          <BOUCLE_contrats(RUBRIQUES){id_parent}{par num titre,titre}>
 		          <div class="choix">
-                    <input id="cq#ID_RUBRIQUE" class="checkbox" type="checkbox" value="#ID_RUBRIQUE" name="cq[]"
-                    [(#ID_RUBRIQUE|in_array{#ENV{recherche}}|oui)checked="checked"]/><label for="cq#ID_RUBRIQUE">#TITRE</label>
+                    <input id="cq_#ID_RUBRIQUE" class="checkbox" type="checkbox" value="#ID_RUBRIQUE" name="cq[]"
+                    [(#ID_RUBRIQUE|in_array{#ENV{cq,#ARRAY}}|oui)checked="checked"]/><label for="cq_#ID_RUBRIQUE">#TITRE</label>
                 </div>
 		          </BOUCLE_contrats>
 		        </BOUCLE_recherche>
@@ -22,7 +20,6 @@
 		    </li>
 		[(#SAISIE{selection,perimetre,label=<:perimetre:>,id_mot})]
 		</ul>
-		</fieldset>
 		[(#REM) ajouter les saisies supplementaires : extra et autre, a cet endroit ]
 		<!--extra-->
 		<p class="boutons"><input type='submit' class='submit' value='<:bouton_enregistrer:>' /></p>
