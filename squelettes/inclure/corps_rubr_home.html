@@ -41,7 +41,7 @@
 
 <div id="menu_accordeon_home">
 
-      <BOUCLE_rubr_menu_accordeon(RUBRIQUES){id_parent=#ENV{id_rubrique}}>
+      <BOUCLE_rubr_menu_accordeon(RUBRIQUES){id_parent IN 259,265}{lang}>
        <BOUCLE_article_menu_accordeon(ARTICLES) {id_rubrique} {par num titre}>
         [<div class="accordionButton">(#TITRE|supprimer_numero)</div>]
         <div style="display: none;" class="accordionContent"><a href="[(#URL_SITE)]"><BOUCLE_documents_menu_accordeon(DOCUMENTS) {id_article} {mode=document}{extension IN png,jpg,gif} {par num titre, date}{doublons}{vu=non}{0,1}>
