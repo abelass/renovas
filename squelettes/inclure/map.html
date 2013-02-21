@@ -1,5 +1,5 @@
 #SET{kml,#ARRAY}
-#SET{id_rubrique,#ENV{recherche}|explode{-}}
+#SET{id_rubrique,#ENV{recherche,#ENV{id_rubrique}}|explode{-}}
 
 <BOUCLE_art(ARTICLES){id_rubrique IN #GET{id_rubrique}}{id_mot ?}>
     <BOUCLE_kml(DOCUMENTS){id_article}{tout}{extension=kml}>
