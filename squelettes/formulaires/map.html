@@ -6,19 +6,27 @@
 		#ACTION_FORMULAIRE{#ENV{action}}
 		<ul>
 		    <li>
-		        <label for="recherche"><:choisir_cq:></label>
-		        
-		        <BOUCLE_recherche(RUBRIQUES){id_trad=3}{lang}>
+		        <label for="cq"><:choisir_cq:></label>
+		        <BOUCLE_cq(RUBRIQUES){id_trad=3}{lang}>
 		          <BOUCLE_contrats(RUBRIQUES){id_parent}{par num titre,titre}>
 		          <div class="choix">
                     <input id="cq_#ID_RUBRIQUE" class="checkbox" type="checkbox" value="#ID_RUBRIQUE" name="cq[]"
-                    [(#ID_RUBRIQUE|in_array{#ENV{cq,#ARRAY}}|oui)checked="checked"]/><label for="cq_#ID_RUBRIQUE">#TITRE</label>
-                </div>
+                    [(#ID_RUBRIQUE|in_array{#ENV{cq,#ARRAY}}|oui)checked="checked"]/>
+                    <label for="cq_#ID_RUBRIQUE">#TITRE</label>
+                    </div>
 		          </BOUCLE_contrats>
-		        </BOUCLE_recherche>
-		        
+		        </BOUCLE_cq>
 		    </li>
-		[(#SAISIE{selection,perimetre,label=<:perimetre:>,id_mot})]
+            <li>
+                <label for="op"><:choisir_op:></label>
+                <BOUCLE_op(MOTS){id_groupe=2}>
+                  <div class="choix">
+                    <input id="op_#ID_MOT" class="checkbox" type="checkbox" value="#ID_MOT" name="op[]"
+                    [(#ID_MOT|in_array{#ENV{op,#ARRAY}}|oui)checked="checked"]/>
+                    <label for="op_#ID_MOT">#TITRE</label>
+                    </div>
+                </BOUCLE_op>
+            </li>
 		</ul>
 		[(#REM) ajouter les saisies supplementaires : extra et autre, a cet endroit ]
 		<!--extra-->
