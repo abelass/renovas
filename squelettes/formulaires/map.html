@@ -27,10 +27,28 @@
                     </div>
                 </BOUCLE_op>
             </li>
+            <li>
+                #SET{annee,#ARRAY}
+                <BOUCLE_cq2(RUBRIQUES){id_trad=3}{lang}>
+                  <BOUCLE_annees(RUBRIQUES){id_parent}{par date_debut}>
+                  #SET{annee,#GET{annee}|array_merge{#ARRAY{a-#DATE_DEBUT|affdate{annee},#DATE_DEBUT|affdate{annee}}}}           
+                  #SET{annee,#GET{annee}|array_merge{#ARRAY{a-#DATE_FIN|affdate{annee},#DATE_FIN|affdate{annee}}}}                                 
+                  </BOUCLE_annees>
+                </BOUCLE_cq2>
+
+                <label for="annee"><:choisir_annee:></label>
+                <select name="annee">
+                    <option value=""> </option>
+                <BOUCLE_arranger(DATA){source tableau,#GET{annee}}{!par cle}>
+                    <option value="[(#CLE|replace{'a-',''})]"[(#ENV{annee}|=={#VALEUR}|oui)selected="selected"]>#VALEUR</option>
+                </BOUCLE_arranger>
+                </select>
+
+            </li>       
 		</ul>
 		[(#REM) ajouter les saisies supplementaires : extra et autre, a cet endroit ]
 		<!--extra-->
-		<p class="boutons"><input type='submit' class='submit' value='<:bouton_enregistrer:>' /></p>
+		<p class="boutons"><input type='submit' class='submit' value='Ok' /></p>
 	</div></form>
 
 </div>

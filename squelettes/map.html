@@ -24,8 +24,8 @@
      [<div class="menu">
          (#FORMULAIRE_MAP)
      </div>]
-     #SET{id_rubrique,#ARRAY}
-     <BOUCLE_cq(RUBRIQUES){id_rubrique IN #ENV{cq}}>
+     #SET{id_rubrique,#ARRAY} #ENV{annee}
+     <BOUCLE_cq(RUBRIQUES){id_rubrique IN #ENV{cq}}{date_debut<=#ENV{annee,2100}|plus{1}}{date_fin>=#ENV{annee,1900}}>
         <BOUCLE_op(RUBRIQUES){id_parent}{id_mot IN #ENV{op}}>
             #SET{id_rubrique,#GET{id_rubrique}|push{#ID_RUBRIQUE}}
         </BOUCLE_op>
