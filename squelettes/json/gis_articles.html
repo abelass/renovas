@@ -1,5 +1,4 @@
-#SET{id_rubrique,#ENV{recherche}|explode{-}}
-
+#SET{id_rubrique,#ENV{recherche,#ENV{id_rubrique}}|explode{-}}
         <BOUCLE_art(ARTICLES){gis}{id_article ?}{id_rubrique IN #GET{id_rubrique}}{id_secteur ?}{id_mot ?}{id_auteur ?}{0, #ENV{limit}}{","}>
                 #SET{operation,_defaut}
         <BOUCLE_rub_mot(MOTS){id_rubrique}{id_groupe=2}>
@@ -10,7 +9,7 @@
         "id":"#ID_GIS",
         "properties": {
             "title":[(#TITRE_GIS*|sinon{#TITRE*}|supprimer_numero|json_encode)],
-            "description":[(#DESCRIPTIF_GIS|sinon{#DESCRIPTIF}|json_encode)][(#SET{logo_doc,''})]
+            "description":[(#SET{logo,#LOGO_ARTICLE|image_passe_partout{50,50}|image_recadre{50,50}})][(#VAL{[(#DESCRIPTIF_GIS|sinon{#DESCRIPTIF})][<br /><a href='(#URL_ARTICLE)'><:lire_suite:></a>][<br />(#GET{logo})<br  class="nettoyeur"/>]}|json_encode)][(#SET{logo_doc,''})][(#SET{logo,''})]
             [(#LOGO_GIS|oui)
             [(#SET{logo_doc,#LOGO_GIS|image_passe_partout{32,32}|image_recadre{32,32}})]]
             [(#LOGO_GIS|non)

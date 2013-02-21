@@ -49,7 +49,7 @@
     
     <div id="colonne_cq_4">
     
-     [(#INCLURE{fond=inclure/inc-choix_map_diapo_pic}{id_rubrique})]
+     [(#INCLURE{fond=inclure/inc-choix_map_diapo_pic,id_rubrique,env})]
     
      <div id="colonne_cq_5">
 
@@ -62,7 +62,7 @@
      
      [<div class="#EDIT{texte} chapo surlignable">(#TEXTE|image_reduire{500,*})</div>]
 
-     <BOUCLE_article_rubrique(ARTICLES){id_rubrique}{par num titre, titre}>
+     <BOUCLE_article_rubrique(ARTICLES){id_rubrique}{id_mot ?}{par num titre, titre}>
 
          <div class="un_encart_article">
          
@@ -83,8 +83,7 @@
 
     </BOUCLE_article_si_plusieurs_articles>
     </B_article_si_plusieurs_articles>
-    
-       <BOUCLE_article(ARTICLES){id_rubrique}>
+       <BOUCLE_article(ARTICLES){id_rubrique}{id_mot ?}>
         [<div class="#EDIT{chapo} chapo surlignable">(#CHAPO|image_reduire{500,*})</div>]
         [<div class="#EDIT{texte} texte surlignable">(#TEXTE|image_reduire{500,*})</div>]
         [<div class="#EDIT{ps} ps surlignable"><hr />(#PS|image_reduire{500,*})</div>]

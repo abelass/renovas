@@ -5,11 +5,17 @@
             <li[ class="(#EXPOSE)"]>
                 <a href="#URL_RUBRIQUE"[ class="(#EXPOSE)"]>#TITRE</a>
                 <ul>
-                 <BOUCLE_si_plusieurs_articles(ARTICLES){id_rubrique}{id_rubrique=#ENV{id_rubrique}}{1,1}>
-                     <BOUCLE_affiche_les_articles(ARTICLES){id_rubrique}{par num titre, titre}>
+                 <BOUCLE_themes(MOTS){id_groupe=3}{par multi titre}>
+                 <B_art_mots>
+                    <li><a href="[(#URL_RUBRIQUE|parametre_url{id_mot,#ID_MOT})]" class="ajax">[(#TITRE|couper{80}|supprimer_numero)]</a></li> 
+                    <BOUCLE_art_mots(ARTICLES){id_rubrique}{id_rubrique=#ENV{id_rubrique}}{id_mot}{doublons}> </BOUCLE_art_mots>
+                 </BOUCLE_themes>
+                <BOUCLE_si_plusieurs_articles(ARTICLES){id_rubrique}{id_rubrique=#ENV{id_rubrique}}{1,1}>                
+                 <BOUCLE_affiche_les_articles(ARTICLES){id_rubrique}{par num titre, titre}{doublons}>
                        <li><a href="#URL_ARTICLE">[(#TITRE|couper{80}|supprimer_numero)]</a></li> <!-- s'il y a plusieurs articles, afficher leur titre à ce niveau ci -->
                      </BOUCLE_affiche_les_articles>              
                  </BOUCLE_si_plusieurs_articles>
+                 
                     <BOUCLE_sous_rubriques(RUBRIQUES) {id_parent} {par num titre}{!par date}><BOUCLE_test_expose(RUBRIQUES) {id_enfant}{tout}>#EXPOSE{' '}</BOUCLE_test_expose>
                     <li><a href="#URL_RUBRIQUE"[ class="(#EXPOSE)"]>#TITRE</a><BOUCLE_re(BOUCLE_sous_rubriques)></BOUCLE_re>    </li>
                     </B_test_expose></BOUCLE_sous_rubriques>
