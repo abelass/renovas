@@ -293,6 +293,21 @@ div#outer_container {
 }
 
 
+/* Afficher les flèches du menu */
+ul.menu li a.fleches_menu_closed {
+	background:#ccc url(fleches_menu_closed.png) no-repeat 20px 10px;
+    margin:0;
+	padding:8px 2px 8px 37px ;
+}
+
+ul.menu li a.fleches_menu_opened {
+	background:#ccc url(fleches_menu_opened.png) no-repeat 20px 10px;
+    margin:0;
+	padding:8px 2px 8px 37px ;
+}
+
+
+
 /* Couleurs de Contrats de Quartier */
 .cq_qu_est_ce { /* Qu'est-ce que c'est ? */
 	background-color:#cdcdcd;
@@ -549,6 +564,7 @@ ul.menu li a.myomya {
     margin:0;
 	padding:8px 2px 8px 37px ;
 }
+
 /* #Menu accordeon */
 
 #menu_vide { /* pour simuler la place du menu lorsqu'il n'y a pas de menu (page recherche, article...) */

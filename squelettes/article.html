@@ -66,12 +66,11 @@ var galleries = $('.ad-gallery').adGallery({
     [<img src="(#CHEMIN{design/logos_cq/#GET{racine_cq}.jpg})" />]
    </div>
 
+
    <div id="colonne_cq_3">
-   
     [(#REM)MENU propre aux CQ ]
-
     <INCLURE{fond=inclure/inc-menu_pour_cq,env,id_rubrique,racine_cq=#GET{racine_cq}}>
-
+   	<div id="menu_vide">&nbsp;</div>
    </div> <!-- #colonne_cq_3 -->
 
     
@@ -93,9 +92,6 @@ var galleries = $('.ad-gallery').adGallery({
         [(#INCLURE{fond=inclure/inc_vignettes_colonne_6,id_article, env})] [(#REM) = Vignettes dans la colonne de Gauche ]
        </BOUCLE_pour_portfolio>
        
-        Ponite iam gladios hebetes: pugnetur acutis ; Nec dubito, telis quin<br />
-        amor. Tum bene fortis equus reserato carcere currit, Cum q<br />
-        uos praetereat quosque sequatur habet.
      </div> <!-- #colonne_cq_6 -->
 
     </div> <!-- #colonne_cq_4 -->
