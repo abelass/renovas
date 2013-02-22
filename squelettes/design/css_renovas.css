@@ -549,10 +549,12 @@ ul.menu li a.myomya {
     margin:0;
 	padding:8px 2px 8px 37px ;
 }
-
-
 /* #Menu accordeon */
- 
+
+#menu_vide { /* pour simuler la place du menu lorsqu'il n'y a pas de menu (page recherche, article...) */
+	width:195px;
+	height:30px;
+}
 
 
 
@@ -669,7 +671,7 @@ h3 {
 }
 .accordionContent {	
 	height:230px;
-	background: #95B1CE;
+	background:#eee;
 	display: none;
 	border-bottom: 2px solid #FFFFFF;
 	overflow:hidden;
