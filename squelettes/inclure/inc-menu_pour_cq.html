@@ -13,7 +13,7 @@
                  <ul>]             
                 <BOUCLE_si_plusieurs_articles(ARTICLES){id_rubrique}{1,1}{si #GET{se}|non}>
                  <B_affiche_les_articles>
-                    <a href="#URL_RUBRIQUE" class="[(#EXPOSE) ]fleches_menu_opened">#GET{titre}</a>#SET{titre,''}   
+                    <a href="#URL_RUBRIQUE" class="[(#EXPOSE) ]fleches_menu_opened">#GET{titre}</a>  
                     <ul>               
                  <BOUCLE_affiche_les_articles(ARTICLES){id_rubrique}{id_rubrique=#ENV{id_rubrique}}{par num titre, titre}>
                        <li><a href="#URL_ARTICLE"[ class="(#EXPOSE)"]>[(#TITRE|couper{80}|supprimer_numero)]</a></li> <!-- s'il y a plusieurs articles, afficher leur titre à ce niveau ci -->
@@ -24,22 +24,19 @@
                  [(#EXPOSE|non) 
                  </ul>] 
                  </B_si_plusieurs_articles>
-                
-                 <B_themes>
-                 <a href="#URL_RUBRIQUE" class="[(#EXPOSE) ]fleches_menu_[(#EXPOSE|?{opened,closed})]">#TITRE</a>   
-                 <ul> 
-                 <BOUCLE_themes(MOTS){id_groupe=3}{par multi titre}{si #GET{se}|oui}>
-                 <B_art_mots>
-                    <li><a href="[(#URL_RUBRIQUE|parametre_url{id_mot,#ID_MOT})]" class="ajax">[(#TITRE|couper{80}|supprimer_numero)]</a></li> 
-                    <BOUCLE_art_mots(ARTICLES){id_rubrique}{id_rubrique=#ENV{id_rubrique}}{id_mot}> </BOUCLE_art_mots>
-                 </BOUCLE_themes>
-                 </ul>                
-                </B_themes>
-                 <a href="#URL_RUBRIQUE" [class="(#EXPOSE)"]>#TITRE</a>
-                <//B_themes>                                   
+                     <B_themes>
+                         <a href="#URL_RUBRIQUE" class="[(#EXPOSE) ]fleches_menu_[(#EXPOSE|?{opened,closed})]">#TITRE</a>   
+                         <ul> 
+                         <BOUCLE_themes(MOTS){id_groupe=3}{par multi titre}{si #GET{se}|oui}>
+                         <B_art_mots>
+                            <li><a href="[(#URL_RUBRIQUE|parametre_url{id_mot,#ID_MOT})]" class="ajax">[(#TITRE|couper{80}|supprimer_numero)]</a></li> 
+                            <BOUCLE_art_mots(ARTICLES){id_rubrique}{id_rubrique=#ENV{id_rubrique}}{id_mot}> </BOUCLE_art_mots>
+                         </BOUCLE_themes>
+                         </ul>                
+                        </B_themes>
+                     <a href="#URL_RUBRIQUE" [class="(#EXPOSE)"]>#TITRE</a>
+                    <//B_themes>                                   
                  <//B_si_plusieurs_articles>                  
-                
-                 
         </BOUCLE_rubriques>
         </ul>
     </B_rubriques>
@@ -48,8 +45,8 @@
         <BOUCLE_rub(RUBRIQUES){id_rubrique}>
           <ul class="menu">
             <li[ class="(#EXPOSE)"]>
-                <a href="#URL_RUBRIQUE"[ class="(#EXPOSE)"]>#TITRE</a>
                   <B_articles>
+                  <a href="#URL_RUBRIQUE" class="[(#EXPOSE) ]fleches_menu_[(#EXPOSE|?{opened,closed})]">#TITRE</a>
                    <ul>     
                          
                         <BOUCLE_articles(ARTICLES) {id_rubrique} {par num titre}>
