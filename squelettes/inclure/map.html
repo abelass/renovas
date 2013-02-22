@@ -1,7 +1,7 @@
 #SET{kml,#ARRAY}
 #SET{id_rubrique,#ENV{recherche,#ENV{id_rubrique}}|explode{-}}
 
-<BOUCLE_art(ARTICLES){id_rubrique IN #GET{id_rubrique}}{id_mot ?}>
+<BOUCLE_art(ARTICLES){id_rubrique IN #GET{id_rubrique}}{id_mot ?}{id_article ?}>
     <BOUCLE_kml(DOCUMENTS){id_article}{tout}{extension=kml}>
     #SET{kml,#GET{kml}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#ID_DOCUMENT}}}
     </BOUCLE_kml>
