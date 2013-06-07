@@ -95,7 +95,7 @@ var galleries = $('.ad-gallery').adGallery({
 
      <div id="colonne_cq_6">
        <!-- XXXXXXXXXXXXXXXXXXXX Si on est en "Batiment" (=mot clé 4), afficher les vignettes dans le colonne de droite -->
-       <BOUCLE_pour_portfolio(ARTICLES){id_rubrique}{0,1}{id_mot=4}>        
+       <BOUCLE_pour_portfolio(RUBRIQUES){id_rubrique}{0,1}{id_mot=4}>        
         [(#INCLURE{fond=inclure/inc_vignettes_colonne_6,id_article, env})] [(#REM) = Vignettes dans la colonne de Gauche ]
        </BOUCLE_pour_portfolio>
        
