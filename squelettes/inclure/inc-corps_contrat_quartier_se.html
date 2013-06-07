@@ -1,0 +1,26 @@
+<BOUCLE_article_rubrique(ARTICLES){id_rubrique}{id_mot}{par num titre, titre}>
+         <div class="un_encart_article">
+            [<h3 class>(#TITRE|couper{400}|supprimer_numero)</h3>]
+            [<div class="#EDIT{chapo} chapo surlignable">(#CHAPO|image_reduire{500,*})</div>]
+            [<a href="#URL_ARTICLE">
+            (#LOGO_ARTICLE
+            |image_passe_partout{190,130}
+            |image_recadre{190,130}
+            |inserer_attribut{class,logo_article_renovas}
+            |inserer_attribut{alt,[(#TITRE|attribut_html|couper{80})]})
+            </a>]
+
+            [<div class="#EDIT{texte} texte surlignable">(#TEXTE|couper{400})</div>]
+            <a href="#URL_ARTICLE" class="lire_la_suite"> <:lire_suite:></a>
+         </div>         
+</BOUCLE_article_rubrique>
+ <B_themes>
+     <ul> 
+     <BOUCLE_themes(MOTS){id_groupe=3}{par multi titre}>
+     <B_art_mots>
+        <li><a href="[(#URL_RUBRIQUE|parametre_url{id_mot,#ID_MOT})]" class="ajax">[(#TITRE|couper{80}|supprimer_numero)]</a></li> 
+        <BOUCLE_art_mots(ARTICLES){id_rubrique}{id_rubrique}{id_mot}> </BOUCLE_art_mots>
+     </BOUCLE_themes>
+     </ul>                
+</B_themes>
+<//B_article_rubrique>

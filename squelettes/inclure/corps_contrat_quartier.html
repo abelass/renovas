@@ -6,14 +6,20 @@
         </BOUCLE_re>
     </BOUCLE_niveler>
 </BOUCLE_rub>
+
+[(#REM)Rubrique socio-economique]
+
+
+<BOUCLE_mot(MOTS){id_rubrique}{id_mot=6}>
+    #SET{se,oui} #SET{id_mot,#ENV{id_mot,-1}}
+</BOUCLE_mot>
+
 <div id="corps_contrat_quartier"[ class="racine_cq_(#GET{racine_cq})"]>
    <div id="colonne_cq_1">    
    [(#GET{racine_cq}?{
        [(#INCLURE{fond=inclure/inc-liste_cq, env,racine_cq=#GET{racine_cq}})][(#REM) Liste déroulante des CQ ],
        &nbsp;
-   })
-
-       ]
+   })]
    </div> <!-- #colonne_cq_1 -->      
 
    <div id="colonne_cq_2">
@@ -56,30 +62,15 @@
     <BOUCLE_chapo_du_haut(RUBRIQUES){id_rubrique}>
      [<div class="#EDIT{texte} chapo surlignable">(#TEXTE|image_reduire{500,*})</div>]
     </BOUCLE_chapo_du_haut>
-
-     <BOUCLE_article_rubrique(ARTICLES){id_rubrique}{id_mot ?}{par num titre, titre}>
-
-         <div class="un_encart_article">
-         
-            [<h3 class>(#TITRE|couper{400}|supprimer_numero)</h3>]
-            [<div class="#EDIT{chapo} chapo surlignable">(#CHAPO|image_reduire{500,*})</div>]
-            [<a href="#URL_ARTICLE">
-            (#LOGO_ARTICLE
-            |image_passe_partout{190,130}
-            |image_recadre{190,130}
-            |inserer_attribut{class,logo_article_renovas}
-            |inserer_attribut{alt,[(#TITRE|attribut_html|couper{80})]})
-            </a>]
-
-            [<div class="#EDIT{texte} texte surlignable">(#TEXTE|couper{400})</div>]
-            <a href="#URL_ARTICLE" class="lire_la_suite"> <:lire_suite:></a>
-         </div>
-         
-     </BOUCLE_article_rubrique>
+    
+    [(#GET{se}|?{
+        #INCLURE{fond=inclure/inc-corps_contrat_quartier_se,env},
+        #INCLURE{fond=inclure/inc-corps_contrat_quartier_defaut,env},
+        })]
 
     </BOUCLE_article_si_plusieurs_articles>
     </B_article_si_plusieurs_articles>
-       <BOUCLE_article(ARTICLES){id_rubrique}{id_mot ?}>
+       <BOUCLE_article(ARTICLES){id_rubrique}{id_mot ?=#GET{id_mot}}>
         [<div class="#EDIT{chapo} chapo surlignable">(#CHAPO|image_reduire{500,*})</div>]
         [<div class="#EDIT{texte} texte surlignable">(#TEXTE|image_reduire{500,*})</div>]
         [<div class="#EDIT{ps} ps surlignable"><hr />(#PS|image_reduire{500,*})</div>]
