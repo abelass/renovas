@@ -2,7 +2,7 @@
     <BOUCLE_rub(RUBRIQUES){id_rubrique}>
     #SET{titre,#TITRE}
     #SET{racine_cq,#ID_TRAD}
-        <BOUCLE_niveler(RUBRIQUES){id_enfant}{id_trad!=3}{id_parent!=0}{tout}{lang}>
+        <BOUCLE_niveler(RUBRIQUES){id_enfant}{id_trad!=3}{id_parent!=0}{tout}{lang}> #SET{titre,#TITRE}
             #SET{racine_cq,#ID_TRAD}
             <BOUCLE_re(BOUCLE_niveler)>
             </BOUCLE_re>
@@ -46,7 +46,7 @@ var galleries = $('.ad-gallery').adGallery({
     <div id="outer_container">
  [(#INCLURE{fond=inclure/inc-en_tete,id_rubrique,id_article,lang})][(#REM) menu de l'en-tête ]        
         <div id="fil_ariane">
-			    <BOUCLE_ariane(HIERARCHIE){id_article}> &gt; <a href="#URL_RUBRIQUE">[(#TITRE|couper{80})]</a></BOUCLE_ariane>[ &gt; <strong class="on">(#TITRE|couper{80})</strong>]
+			    <BOUCLE_ariane(HIERARCHIE){id_article}{' &gt; '}><a href="#URL_RUBRIQUE">[(#TITRE|couper{80})]</a></BOUCLE_ariane>[ &gt; <strong class="on">(#TITRE|couper{80})</strong>]
 		</div>
 	
 <div id="corps_contrat_quartier"[ class="racine_cq_(#GET{racine_cq})"]>
