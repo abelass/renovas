@@ -43,7 +43,7 @@ var galleries = $('.ad-gallery').adGallery({
 
   animation_speed: 550, 
   // Can you navigate by clicking on the left/right on the image?
-  display_next_and_prev: true, 
+  display_next_and_prev: false, 
   // Are you allowed to scroll the thumb list?
   display_back_and_forward: true, 
   // If 0, it jumps the width of the container
@@ -67,7 +67,7 @@ var galleries = $('.ad-gallery').adGallery({
     }
   },
   // or slide-hori 'slide-vert', 'resize', 'fade', 'none' or false
-  effect: 'none', 
+  effect: 'fade', 
   // Move to next/previous image with keyboard arrows?
   enable_keyboard_move: true, 
   // If set to false, you can't go from the last image to the first, and vice versa
@@ -86,27 +86,14 @@ var galleries = $('.ad-gallery').adGallery({
     // Executes right after the internal init, can be used to choose which images
     // you want to preload
     init: function() {
-      // preloadAll uses recursion to preload each image right after one another
-      this.preloadAll();
-      // Or, just preload the first three
-      this.preloadImage(0);
-      this.preloadImage(1);
-      this.preloadImage(2);
+    
     },
     // This gets fired right after the new_image is fully visible
     afterImageVisible: function() {
-      // For example, preload the next image
-      var context = this;
-      this.loading(true);
-      this.preloadImage(this.current_index + 1,
-        function() {
-          // This function gets executed after the image has been loaded
-          context.loading(false);
-        }
-      );
-
-      
-    }
+		
+		
+		
+	}
   }
 });
 

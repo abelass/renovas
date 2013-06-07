@@ -7,6 +7,10 @@
  *
  * Demo and documentation: http://coffeescripter.com/code/ad-gallery/
  */
+ 
+ 
+ /* Pour la Home, voir aussi squelettes/inclure/inc-javascript_home.html */
+ 
 (function($) {
   $.fn.adGallery = function(options) {
     var defaults = { loader_image: 'loader.gif',

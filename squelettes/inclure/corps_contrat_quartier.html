@@ -57,10 +57,12 @@
 
     [(#REM) Si article unique afficher ARTICLE complet. Sinon, afficher les résumés]
     <BOUCLE_article_si_plusieurs_articles(ARTICLES){id_rubrique}{1,1}>
+
+    [(#REM) Plusieurs articles ] 
      
-     [(#REM) Plusieurs articles ] 
-     
+    <BOUCLE_chapo_du_haut(RUBRIQUES){id_rubrique}>
      [<div class="#EDIT{texte} chapo surlignable">(#TEXTE|image_reduire{500,*})</div>]
+    </BOUCLE_chapo_du_haut>
 
      <BOUCLE_article_rubrique(ARTICLES){id_rubrique}{id_mot ?}{par num titre, titre}>
 
@@ -76,7 +78,7 @@
             </a>]
 
             [<div class="#EDIT{texte} texte surlignable">(#TEXTE|couper{400})</div>]
-            <a href="#URL_ARTICLE" class="lire_la_suite"> &gt; <:lire_suite:></a>
+            <a href="#URL_ARTICLE" class="lire_la_suite"> <:lire_suite:></a>
          </div>
          
      </BOUCLE_article_rubrique>

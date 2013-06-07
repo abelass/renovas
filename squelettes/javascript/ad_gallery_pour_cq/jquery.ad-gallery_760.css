@@ -83,13 +83,15 @@
         position: absolute;
         bottom: 90px;
         left: 0px;
-        padding: 7px;
+        padding: 7px 7px 7px 19px;
         text-align: left;
         width: 100%;
         z-index: 2;
         background: url(opa75.png);
         color: #e95413;
-		font-size:34px;
+		font-size:32px;
+		text-transform:uppercase;
+		line-height:1.1em;
       }
       * html .ad-gallery .ad-image-wrapper .ad-image .ad-image-description {
         background: none;
