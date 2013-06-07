@@ -1,5 +1,6 @@
 <BOUCLE_principale(ARTICLES) {id_article}>
     <BOUCLE_rub(RUBRIQUES){id_rubrique}>
+    #SET{titre,#TITRE}
     #SET{racine_cq,#ID_TRAD}
         <BOUCLE_niveler(RUBRIQUES){id_enfant}{id_trad!=3}{id_parent!=0}{tout}{lang}>
             #SET{racine_cq,#ID_TRAD}
@@ -60,7 +61,12 @@ var galleries = $('.ad-gallery').adGallery({
 
    <div id="colonne_cq_2">
     <div id="ligne_au_dessus_titre"> </div>
-      <h1 class="cq_titre_1">[(#TITRE|supprimer_numero)]</h1>
+      <h1 class="cq_titre_1">
+           [(#GET{racine_cq}|in_array{#LISTE{5,31}}|?{
+               [(#GET{titre}|supprimer_numero)]
+               ,
+               [(#TITRE|supprimer_numero)]
+           })]</h1>
 
     <div id="logo_cq_">
     [<img src="(#CHEMIN{design/logos_cq/#GET{racine_cq}.jpg})" />]
@@ -76,9 +82,10 @@ var galleries = $('.ad-gallery').adGallery({
     
     <div id="colonne_cq_4">
     
-     [(#INCLURE{fond=inclure/inc-choix_map_diapo_pic,id_rubrique,id_article,env})]
+     [(#INCLURE{fond=inclure/inc-choix_map_diapo_pic,id_rubrique,id_article,env,ajax})]
     
      <div id="colonne_cq_5">
+        [(#GET{racine_cq}|in_array{#LISTE{5,31}}|oui)<h2>#TITRE</h2>]
         [<div class="#EDIT{chapo} chapo surlignable">(#CHAPO|image_reduire{500,*})</div>]
         [<div class="#EDIT{texte} texte surlignable">(#TEXTE|image_reduire{500,*})</div>]
         [<div class="#EDIT{ps} ps surlignable"><hr />(#PS|image_reduire{500,*})</div>]
