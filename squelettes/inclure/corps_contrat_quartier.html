@@ -1,4 +1,4 @@
-<BOUCLE_rub(RUBRIQUES){id_rubrique}>
+<BOUCLE_rub(RUBRIQUES){id_rubrique}>#SET{titre,#TITRE}
 #SET{racine_cq,#ID_TRAD}
     <BOUCLE_niveler(RUBRIQUES){id_enfant}{id_trad!=3}{id_parent!=0}{tout}{lang}>
         #SET{racine_cq,#ID_TRAD}
@@ -19,21 +19,13 @@
    <div id="colonne_cq_2">
     <div id="ligne_au_dessus_titre"> </div>
 
-    [(#REM) Si article unique afficher TITRE ARTICLE. Sinon, afficher TITRE RUBRIQUE]
-    <BOUCLE_titre_si_plusieurs_articles(ARTICLES){id_rubrique}{1,1}>
-     
-     <BOUCLE_titre_rubrique(RUBRIQUES){id_rubrique}>
-      <h1 class="cq_titre_1">[(#TITRE|supprimer_numero)]</h1>
+     <BOUCLE_titre_rubrique(RUBRIQUES){id_rubrique=#GET{racine_cq}}>
+      <h1 class="cq_titre_1">[(#ID_TRAD|=={5})<:contrat_quartier_durable:> ][<strong> (#TITRE|supprimer_numero)</strong>]</h1>
      </BOUCLE_titre_rubrique>
 
     </BOUCLE_titre_si_plusieurs_articles>
     </B_titre_si_plusieurs_articles>
-    
-       <BOUCLE_titre_article(ARTICLES){id_rubrique}>
-         <h1 class="cq_titre_1">[(#TITRE|supprimer_numero)]</h1>
-       </BOUCLE_titre_article>
-       
-    <//B_titre_si_plusieurs_articles>
+
     <div id="logo_cq_">
     [<img src="(#CHEMIN{design/logos_cq/#GET{racine_cq}.jpg})" />]
    </div>
@@ -53,12 +45,13 @@
     
      <div id="colonne_cq_5">
 
-
-
+    <h2>#GET{titre}</h2>
     [(#REM) Si article unique afficher ARTICLE complet. Sinon, afficher les résumés]
     <BOUCLE_article_si_plusieurs_articles(ARTICLES){id_rubrique}{1,1}>
 
     [(#REM) Plusieurs articles ] 
+    
+    
      
     <BOUCLE_chapo_du_haut(RUBRIQUES){id_rubrique}>
      [<div class="#EDIT{texte} chapo surlignable">(#TEXTE|image_reduire{500,*})</div>]
@@ -69,6 +62,7 @@
          <div class="un_encart_article">
          
             [<h3 class>(#TITRE|couper{400}|supprimer_numero)</h3>]
+            [<div class="#EDIT{chapo} chapo surlignable">(#CHAPO|image_reduire{500,*})</div>]
             [<a href="#URL_ARTICLE">
             (#LOGO_ARTICLE
             |image_passe_partout{190,130}
