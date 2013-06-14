@@ -4,13 +4,19 @@ $(document).ready(function() {
     /********************************************************************************************************************
     SIMPLE ACCORDIAN STYLE MENU FUNCTION
     ********************************************************************************************************************/   
-    $('div.accordionButton').click(function() {
+    /* JS menu accordeon home */
+	$('div.accordionButton').click(function() {
+		
         $("div.accordionButton").css({'background-image' : 'url(#CHEMIN{design/fleche_home_ferme.png})'}); /* RAZ */
-        $('div.accordionContent').slideUp('normal');    
-        $(this).css({'background-image' : 'url(#CHEMIN{design/fleche_home_ouvert.png})'}); /* RAZ */
-        $(this).next().slideDown('normal');
+        $('div.accordionContent').slideUp('normal');
+		
+        if ($(this).next().is(':hidden')) { /* refermer uniquement si ouvert */
+			$(this).css({'background-image' : 'url(#CHEMIN{design/fleche_home_ouvert.png})'}); /* RAZ */
+			$(this).next().slideDown('normal');
+		}
     });
-    
+
+	
     /********************************************************************************************************************
     CLOSES ALL DIVS ON PAGE LOAD
     ********************************************************************************************************************/   
@@ -20,8 +26,6 @@ $(document).ready(function() {
  $(".accordion_bg_alpha").animate({"opacity": "0.8"}, 0);
 });
 </script>
-
-
 
 
 
