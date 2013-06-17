@@ -16,7 +16,7 @@
 </BOUCLE_article_rubrique>
  <B_themes>
      <ul> 
-     <BOUCLE_themes(MOTS){id_groupe=3}{par multi titre}>
+     <BOUCLE_themes(MOTS){id_groupe=3}{par num titre}>
      <B_art_mots>
         <li><a href="[(#URL_RUBRIQUE|parametre_url{id_mot,#ID_MOT})]" class="ajax">[(#TITRE|couper{80}|supprimer_numero)]</a></li> 
         <BOUCLE_art_mots(ARTICLES){id_rubrique}{id_rubrique}{id_mot}> </BOUCLE_art_mots>
