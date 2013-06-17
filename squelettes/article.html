@@ -61,12 +61,24 @@ var galleries = $('.ad-gallery').adGallery({
 
    <div id="colonne_cq_2">
     <div id="ligne_au_dessus_titre"> </div>
-      <h1 class="cq_titre_1">
+      
+     <BOUCLE_titre_rubrique(RUBRIQUES){id_trad=#GET{racine_cq}}{lang}>
+     <h1 class="cq_titre_1">
+        <BOUCLE_cq(RUBRIQUES){id_enfant}{id_trad=3}>
+        #TITRE
+        </BOUCLE_cq>
+        [<strong> (#TITRE|supprimer_numero)</strong>]
+     </h1>
+     </BOUCLE_titre_rubrique>
+          [(#REM) deśactivé pour le moment
+          <h1 class="cq_titre_1">
            [(#GET{racine_cq}|in_array{#LISTE{5,31}}|?{
                [(#GET{titre}|supprimer_numero)]
                ,
                [(#TITRE|supprimer_numero)]
-           })]</h1>
+           })]
+           
+       </h1>]
 
     <div id="logo_cq_">
     [<img src="(#CHEMIN{design/logos_cq/#GET{racine_cq}.jpg})" />]

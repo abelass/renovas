@@ -25,8 +25,13 @@
    <div id="colonne_cq_2">
     <div id="ligne_au_dessus_titre"> </div>
 
-     <BOUCLE_titre_rubrique(RUBRIQUES){id_rubrique=#GET{racine_cq}}>
-      <h1 class="cq_titre_1">[(#ID_TRAD|=={5}|oui)<:contrat_quartier_durable:> ][<strong> (#TITRE|supprimer_numero)</strong>]</h1>
+     <BOUCLE_titre_rubrique(RUBRIQUES){id_trad=#GET{racine_cq}}{lang}>
+     <h1 class="cq_titre_1">
+        <BOUCLE_cq(RUBRIQUES){id_enfant}{id_trad=3}>
+        #TITRE
+        </BOUCLE_cq>
+        [<strong> (#TITRE|supprimer_numero)</strong>]
+     </h1>
      </BOUCLE_titre_rubrique>
 
     </BOUCLE_titre_si_plusieurs_articles>
