@@ -17,20 +17,16 @@
 <link rel="alternate" type="application/rss+xml" title="<:syndiquer_rubrique:>" href="[(#URL_PAGE{backend}|parametre_url{id_rubrique,#ID_RUBRIQUE})]" />
 
 <link href="#CHEMIN{design/css_renovas.css}" rel="stylesheet" type="text/css" media="all" />
+[(#INCLURE{fond=inclure/inc-cufon, env})][(#REM) Fonte introduite via Cufon ]
 [(#INCLURE{fond=inclure/inc-java_scripts, env})][(#REM) javascripts etc ]
 
+<!--[if IE]>
+    <link type="text/css" rel="stylesheet" href="#CHEMIN{design/ie.css}" />
+<![endif]-->
+
+
 [(#ID_TRAD|=={1}|non)
-<!-- Diapo -->
-<link rel="stylesheet" type="text/css" href="#CHEMIN{javascript/ad_gallery_pour_cq/jquery.ad-gallery_547.css}">
-<script type="text/javascript" src="#CHEMIN{javascript/ad_gallery_pour_cq/jquery.ad-gallery.js}"></script>
-<script type="text/javascript">
-$(function() {
-var galleries = $('.ad-gallery').adGallery({
-    /* Codes spécifiques pour diapo */
-   });
-});
-</script>
-<!-- #Diapo -->
+<!-- j'ai enlevé le JS du diaporama pour le placer dans inc-choix_map_diapo_pic.html -->
 ]
 
 [(#ID_TRAD|=={25}|oui)
@@ -40,17 +36,23 @@ $(document).ready(function() {
     /********************************************************************************************************************
     SIMPLE ACCORDIAN STYLE MENU FUNCTION
     ********************************************************************************************************************/   
-    $('div.accordionButton_conseil_renov').click(function() {
+    /* JS menu accordeon rubr 25 */
+
+	$('div.accordionButton_conseil_renov').click(function() {
+		
         $("div.accordionButton_conseil_renov").css({'background-image' : 'url(squelettes/design/fleche_home_ferme.png)'}); /* RAZ */
         $('div.accordionContent_conseil_reno').slideUp('normal');   
-        $(this).css({'background-image' : 'url(squelettes/design/fleche_home_ouvert.png)'}); /* RAZ */
-        $(this).next().slideDown('normal');
+		
+        if ($(this).next().is(':hidden')) { /* refermer uniquement si ouvert */
+        	$(this).css({'background-image' : 'url(squelettes/design/fleche_home_ouvert.png)'}); /* RAZ */
+			$(this).next().slideDown('normal');
+		}
     });
-    
+
     /********************************************************************************************************************
     CLOSES ALL DIVS ON PAGE LOAD
     ********************************************************************************************************************/   
-    $("div.accordionContent_conseil_reno").hide();
+    $("div.accordionContent_conseil_reno_conseil_reno").hide();
 
 
  $(".accordion_bg_alpha").animate({"opacity": "0.8"}, 0);
@@ -67,7 +69,7 @@ $(document).ready(function() {
   [(#INCLURE{fond=inclure/inc-en_tete,id_rubrique,lang})][(#REM) menu de l'en-tête ]
 
     <div id="fil_ariane">
-     <BOUCLE_ariane(HIERARCHIE){id_rubrique}{id_rubrique}{' &gt; '}><a href="#URL_RUBRIQUE">[(#TITRE|couper{80})]</a></BOUCLE_ariane>[ &gt; <strong class="on">(#TITRE|couper{80})</strong>]
+     <BOUCLE_ariane(HIERARCHIE){id_rubrique}{id_rubrique}{' <img src="squelettes/design/fleche_ariane.png" class="fleche_ariane" alt="fleche" /> '}><a href="#URL_RUBRIQUE">[(#TITRE|couper{80})]</a></BOUCLE_ariane>[ <img src="squelettes/design/fleche_ariane.png" class="fleche_ariane" alt="fleche" /> <strong class="on">(#TITRE|couper{80})</strong>]
     </div>
     
 [(#ID_TRAD|=={3}|oui)

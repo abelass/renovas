@@ -1,124 +1,247 @@
 <BOUCLE_principale(ARTICLES) {id_article}>
+
     <BOUCLE_rub(RUBRIQUES){id_rubrique}>
+
     #SET{titre,#TITRE}
+
     #SET{racine_cq,#ID_TRAD}
+
         <BOUCLE_niveler(RUBRIQUES){id_enfant}{id_trad!=3}{id_parent!=0}{tout}{lang}> #SET{titre,#TITRE}
+
             #SET{racine_cq,#ID_TRAD}
+
             <BOUCLE_re(BOUCLE_niveler)>
+
             </BOUCLE_re>
+
         </BOUCLE_niveler>
+
     </BOUCLE_rub>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 [(#REM) Cf.: http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/
+
 ]<!--[if lt IE 7 ]> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js ie ie6"> <![endif]-->
+
 <!--[if IE 7 ]> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js ie ie7"> <![endif]-->
+
 <!--[if IE 8 ]> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js ie ie8"> <![endif]-->
+
 <!--[if IE 9 ]> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js ie ie9"> <![endif]-->
+
 <!--[if (gt IE 9)|!(IE)]><!--> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js"> <!--<![endif]-->
+
 <head>
+
 <script type='text/javascript'>/*<![CDATA[*/(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement);/*]]>*/</script>
+
 <title>[(#TITRE|couper{80}|textebrut) - ][(#NOM_SITE_SPIP|textebrut)]</title>
+
 [<meta name="description" content="(#INTRODUCTION{150}|attribut_html)" />]
+
 [<link rel="canonical" href="(#URL_ARTICLE|url_absolue)" />]
+
 <INCLURE{fond=inclure/head} />
+
 [(#REM) Lien vers le flux RSS des articles la rubrique ]
+
 <link rel="alternate" type="application/rss+xml" title="<:syndiquer_rubrique:>" href="[(#URL_PAGE{backend}|parametre_url{id_rubrique,#ID_RUBRIQUE})]" />
 
+
+
 <link href="#CHEMIN{design/css_renovas.css}" rel="stylesheet" type="text/css" media="all" />
+
 [(#INCLURE{fond=inclure/inc-java_scripts, env})][(#REM) javascripts etc ]
 
+
+
 <!-- Diapo -->
+
 <link rel="stylesheet" type="text/css" href="#CHEMIN{javascript/ad_gallery_pour_cq/jquery.ad-gallery_547.css}">
+
 <script type="text/javascript" src="#CHEMIN{javascript/ad_gallery_pour_cq/jquery.ad-gallery.js}"></script>
+
 <script type="text/javascript">
+
 $(function() {
+
 var galleries = $('.ad-gallery').adGallery({
+
     /* Codes spécifiques pour diapo */
+
    });
+
 });
+
 </script>
+
 <!-- #Diapo -->
+
+
+
 
 
 </head>
 
+
+
 <body class="pas_surlignable page_article">
+
     <div id="outer_container">
+
  [(#INCLURE{fond=inclure/inc-en_tete,id_rubrique,id_article,lang})][(#REM) menu de l'en-tête ]        
+
         <div id="fil_ariane">
-			    <BOUCLE_ariane(HIERARCHIE){id_article}{' &gt; '}><a href="#URL_RUBRIQUE">[(#TITRE|couper{80})]</a></BOUCLE_ariane>[ &gt; <strong class="on">(#TITRE|couper{80})</strong>]
+			    <BOUCLE_ariane(HIERARCHIE){id_article}{' <img src="squelettes/design/fleche_ariane.png" class="fleche_ariane" alt="fleche" /> '}><a href="#URL_RUBRIQUE">[(#TITRE|couper{80})]</a></BOUCLE_ariane>[ <img src="squelettes/design/fleche_ariane.png" class="fleche_ariane" alt="fleche" /> <strong class="on">(#TITRE|couper{80})</strong>]
 		</div>
 	
+
 <div id="corps_contrat_quartier"[ class="racine_cq_(#GET{racine_cq})"]>
+
    <div id="colonne_cq_1">    
+
    [(#GET{racine_cq}?{
+
        [(#INCLURE{fond=inclure/inc-liste_cq, env,racine_cq=#GET{racine_cq}})][(#REM) Liste déroulante des CQ ],
+
        &nbsp;
+
    })
 
+
+
        ]
+
    </div> <!-- #colonne_cq_1 -->      
 
+
+
    <div id="colonne_cq_2">
+
     <div id="ligne_au_dessus_titre"> </div>
+
       
+
      <BOUCLE_titre_rubrique(RUBRIQUES){id_trad=#GET{racine_cq}}{lang}>
+
      <h1 class="cq_titre_1">
+
         <BOUCLE_cq(RUBRIQUES){id_enfant}{id_trad=3}>
         #TITRE
         </BOUCLE_cq>
-        [<strong> (#TITRE|supprimer_numero)</strong>]
+		[<span class="titre_en_gras"> (#TITRE|supprimer_numero)</class>]
      </h1>
      </BOUCLE_titre_rubrique>
+
           [(#REM) deśactivé pour le moment
+
           <h1 class="cq_titre_1">
+
            [(#GET{racine_cq}|in_array{#LISTE{5,31}}|?{
+
                [(#GET{titre}|supprimer_numero)]
+
                ,
+
                [(#TITRE|supprimer_numero)]
+
            })]
+
            
+
        </h1>]
 
+
+
     <div id="logo_cq_">
+
     [<img src="(#CHEMIN{design/logos_cq/#GET{racine_cq}.jpg})" />]
+
    </div>
 
 
+
+
+
    <div id="colonne_cq_3">
+
     [(#REM)MENU propre aux CQ ]
+
     <INCLURE{fond=inclure/inc-menu_pour_cq,env,id_rubrique,racine_cq=#GET{racine_cq}}>
+
    	<div id="menu_vide">&nbsp;</div>
+
    </div> <!-- #colonne_cq_3 -->
 
+
+
     
+
     <div id="colonne_cq_4">
+
     
+
      [(#INCLURE{fond=inclure/inc-choix_map_diapo_pic,id_rubrique,id_article,env,ajax})]
+
     
+
      <div id="colonne_cq_5">
-        [(#GET{racine_cq}|in_array{#LISTE{5,31}}|oui)<h2>#TITRE</h2>]
+
+        [(#GET{racine_cq}|in_array{#LISTE{5,31}}|oui)<h2 class="cq_titre_h2">#GET{titre}</h2>]
         [<div class="#EDIT{chapo} chapo surlignable">(#CHAPO|image_reduire{500,*})</div>]
+        
+        [(#LOGO_ARTICLE
+        |image_passe_partout{190,130}
+        |image_recadre{190,130}
+        |inserer_attribut{class,logo_article_renovas}
+        |inserer_attribut{alt,[(#TITRE|attribut_html|couper{80})]})]
+            
+            
         [<div class="#EDIT{texte} texte surlignable">(#TEXTE|image_reduire{500,*})</div>]
         [<div class="#EDIT{ps} ps surlignable"><hr />(#PS|image_reduire{500,*})</div>]
         [(#INCLURE{fond=inclure/documents,id_article, env})] [(#REM) Gestion du portfolio et des documents ]
+		[<div class="notes"><hr />(#NOTES)</div>]
+
      </div> <!-- #colonne_cq_5 -->
 
 
+
+
+
      <div id="colonne_cq_6">
+
        <!-- XXXXXXXXXXXXXXXXXXXX Si on est en "Batiment" (=mot clé 4), afficher les vignettes dans le colonne de droite -->
+
        <BOUCLE_pour_portfolio(RUBRIQUES){id_rubrique}{0,1}{id_mot=4}>        
+
         [(#INCLURE{fond=inclure/inc_vignettes_colonne_6,id_article, env})] [(#REM) = Vignettes dans la colonne de Gauche ]
+
        </BOUCLE_pour_portfolio>
+
        
+
      </div> <!-- #colonne_cq_6 -->
 
+
+
     </div> <!-- #colonne_cq_4 -->
+
    </div> <!-- #colonne_cq_2 -->
+
    </div> <!-- #corps_contrat_quartier -->
 
+
+
+   <!-- Pied de page -->
+   [(#INCLURE{fond=inclure/inc-footer,lang})]
+
 </div><!-- #outer_container -->
+
 </body>
+
 </html>
+
 </BOUCLE_principale>[(#INCLURE{fond=404, erreur=<:aucun_article:>})]
+
 <//B_principale>

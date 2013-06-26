@@ -9,7 +9,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
     'choisir_annee'=>'Choisissez une année',        
     'choisir_cq'=>'Choisissez un contrat de quartier',    
     'choisir_op'=>'Choisissez une opération',  
-    'contrat_quartier_durable'=>'Contrat de quartier durable',  
+    'contrat_quartier_durable'=>'Contrats de quartiers durables',  
         
       
     

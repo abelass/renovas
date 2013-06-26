@@ -1,3 +1,6 @@
+#HTTP_HEADER{HTTP/1.0  #ENV{code,'404 Not Found'}}
+#HTTP_HEADER{"Cache-Control: no-store, no-cache, must-revalidate"}
+#HTTP_HEADER{Pragma: no-cache}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 [(#REM) Cf.: http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/
 ]<!--[if lt IE 7 ]> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js ie ie6"> <![endif]-->
@@ -7,7 +10,7 @@
 <!--[if (gt IE 9)|!(IE)]><!--> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js"> <!--<![endif]-->
 <head>
 <script type='text/javascript'>/*<![CDATA[*/(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement);/*]]>*/</script>
-<title><:resultats_recherche:> - [(#NOM_SITE_SPIP|textebrut)]</title>
+<title><:pass_erreur:> [(#ENV{code, 404}|textebrut)] - [(#NOM_SITE_SPIP|textebrut)]</title>
 <INCLURE{fond=inclure/head} />
 <meta name="robots" content="none" />
 
@@ -15,13 +18,12 @@
 [(#INCLURE{fond=inclure/inc-java_scripts, env})][(#REM) javascripts etc ]
 
 </head>
-
-<body class="pas_surlignable page_recherche">
+<body class="pas_surlignable page_404">
+    <div id="outer_container">
     <div id="outer_container">
  [(#INCLURE{fond=inclure/inc-en_tete,id_rubrique,id_article,lang})][(#REM) menu de l'en-tête ]        
         <div id="fil_ariane">
-       		<a href="#URL_SITE_SPIP/"><:accueil_site:></a> <img src="squelettes/design/fleche_ariane.png" class="fleche_ariane" alt="fleche" /> <:info_rechercher:>[ <img src="squelettes/design/fleche_ariane.png" class="fleche_ariane" alt="fleche" /> <strong class="on">(#RECHERCHE)</strong>]
-
+       			 <a href="#URL_SITE_SPIP/"><:accueil_site:></a> <img src="squelettes/design/fleche_ariane.png" class="fleche_ariane" alt="fleche" /> <strong class="on"><:pass_erreur:></strong>
 		</div>
 	
 <div id="corps_contrat_quartier"[ class="racine_cq_(#GET{racine_cq})"]>
@@ -31,7 +33,8 @@
 
    <div id="colonne_cq_2">
     <div id="ligne_au_dessus_titre"> </div>
-      <h1 class="cq_titre_1"><:resultats_recherche:></h1>
+	
+    <h1><:pass_erreur:> [(#ENV{code, 404}|intval)]</h1>
 
     <div id="logo_cq_">
     [<img src="(#CHEMIN{design/logos_cq/#GET{racine_cq}.jpg})" />]
@@ -49,35 +52,9 @@
     
      <div id="colonne_cq_5">
 
-			<p class="soustitre">&#171;&nbsp;(#RECHERCHE)&nbsp;&#187;</p>
-			
-			[(#REM) Articles trouves ]
-			<B_articles>
-			<div class="menu menu_articles">
-				#ANCRE_PAGINATION
-				<h2><:articles:> (#GRAND_TOTAL)</h2>
-				<ul class="spip">
-					<BOUCLE_articles(ARTICLES) {recherche} {!par points} {pagination}>
-					<li><a href="#URL_RUBRIQUE">#TITRE</a></li> [(#REM) Ren : j'ai mis URL_RUBRIQUE pour garder la mise en page des rubriques comme "Conseil en rénovation" ]
-					</BOUCLE_articles>
-				</ul>
-				[<p class="pagination">(#PAGINATION)</p>]
-			</div>
-			</B_articles>
-			
-			[(#REM) Rubriques trouvees ]
-			<B_rubriques>
-			<div class="menu menu_rubriques">
-				#ANCRE_PAGINATION
-				<h2><:rubriques:> (#GRAND_TOTAL)</h2>
-				<ul class="spip">
-					<BOUCLE_rubriques(RUBRIQUES) {recherche} {!par points} {pagination 5}>
-					<li><a href="#URL_RUBRIQUE">#TITRE</a></li>
-					</BOUCLE_rubriques>
-				</ul>
-				[<p class="pagination">(#PAGINATION)</p>]
-			</div>
-			</B_rubriques>
+
+	[<div class="chapo"><p>(#ENV{erreur})</p></div>]
+
 
      </div> <!-- #colonne_cq_5 -->
 

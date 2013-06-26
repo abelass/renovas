@@ -1,10 +1,15 @@
 <BOUCLE_niveler(RUBRIQUES){id_trad=#ENV{racine_cq}}{lang}>
     <BOUCLE_enfant(RUBRIQUES){id_enfant}{id_trad==3}>
         <B_liste_cq_fr>   
-        <div id="cq_box_deroulante">Contrats de Quartiers Durables</div>
+        <div id="cq_box_deroulante"><:contrat_quartier_durable:></div>
     	<div id="cq_deroule">
-    	  <div class="liste_cq cq_qu_est_ce"><BOUCLE_article_questcequecest(ARTICLES) {id_rubrique} {0,1}>
-          <a href="#URL_ARTICLE" title="[(#TITRE|supprimer_numero)]">[(#TITRE|supprimer_numero)]</a></BOUCLE_article_questcequecest></div>
+    	  
+		  		  
+		 <BOUCLE_rub_questceque(RUBRIQUES){id_trad=276}{lang}>
+           <div class="liste_cq cq_qu_est_ce"><a href="#URL_RUBRIQUE" title="[(#TITRE|supprimer_numero)]">[(#TITRE|supprimer_numero)]</a></div>
+		 </BOUCLE_rub_questceque>
+	
+	
           
     	  <BOUCLE_liste_cq_fr(RUBRIQUES) {id_parent} {par num titre}>
     		<div class="liste_cq liste_cq_#ID_RUBRIQUE"><BOUCLE_1_ere_rubrique(RUBRIQUES) {id_parent} {par num titre}{0,1}><a href="#URL_RUBRIQUE" title="[(#TITRE|supprimer_numero)]"></BOUCLE_1_ere_rubrique>[(#TITRE|supprimer_numero)]</a></div>

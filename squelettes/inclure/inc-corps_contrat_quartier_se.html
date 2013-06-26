@@ -1,6 +1,6 @@
 <BOUCLE_article_rubrique(ARTICLES){id_rubrique}{id_mot}{par num titre, titre}>
          <div class="un_encart_article">
-            [<h3 class>(#TITRE|couper{400}|supprimer_numero)</h3>]
+            [<h3><a href="#URL_ARTICLE">(#TITRE|couper{400}|supprimer_numero)</a></h3>]
             [<div class="#EDIT{chapo} chapo surlignable">(#CHAPO|image_reduire{500,*})</div>]
             [<a href="#URL_ARTICLE">
             (#LOGO_ARTICLE

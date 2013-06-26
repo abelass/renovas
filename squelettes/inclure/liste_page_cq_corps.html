@@ -4,15 +4,18 @@
      <h1 class="liste_page_cq_titre_1">[(#TITRE|supprimer_numero)]</h1>
      
     <BOUCLE_rub_questceque(RUBRIQUES){id_trad=276}{lang}>
-         <div class="liste_page_cq cq_qu_est_ce"><a href="#URL_RUBRIQUE">#TITRE</a>
-             
-         </div>
+         <div class="liste_page_cq cq_qu_est_ce"><a href="#URL_RUBRIQUE">#TITRE</a></div>
     </BOUCLE_rub_questceque>
 
 
-    <BOUCLE_articles(RUBRIQUES) {id_parent=#ID_RUBRIQUE} {par num titre}>
-     <div class="liste_page_cq liste_cq_#ID_RUBRIQUE"><a href="#URL_RUBRIQUE " title="[(#TITRE|supprimer_numero)]">[(#TITRE|supprimer_numero)]</a></div>
-    </BOUCLE_articles>  
-        
+   
+    <BOUCLE_articles(RUBRIQUES) {id_parent=3} {par num titre}><div class="liste_page_cq liste_cq_#ID_RUBRIQUE">
+     <BOUCLE_1_ere_rubrique(RUBRIQUES) {id_parent} {par num titre}{0,1}>
+      <a href="#URL_RUBRIQUE" title="[(#TITRE|supprimer_numero)]">
+     </BOUCLE_1_ere_rubrique>
+     [(#TITRE|supprimer_numero)]</a></div>
+    </BOUCLE_articles> 
+       
 
    </div> <!-- liste_cq_corps -->
+   
