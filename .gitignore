@@ -8,4 +8,4 @@ connect.php
 dump
 local
 tmp
-.htaccess
+*.htaccess
