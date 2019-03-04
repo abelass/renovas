@@ -1,0 +1,79 @@
+     <BOUCLE_de_rubrique(ARTICLES){id_rubrique}>
+<div id="corps_contrat_quartier"[ class="racine_cq_(#GET{racine_cq})"]>
+
+   <div id="colonne_cq_1">&nbsp;</div> <!-- #colonne_cq_1 -->      
+
+   <div id="colonne_cq_2">
+
+    <div id="ligne_au_dessus_titre"> </div>
+
+       <h1 class="general_titre_1">[<span class="titre_en_gras"> (#TITRE|supprimer_numero)</class>]</h1>
+
+   <div id="colonne_general_3">
+   </div> <!-- #colonne_cq_3 -->
+
+
+    <div id="colonne_general_4">
+     <!-- pas de zone pour carte etc. -->
+
+     <div id="colonne_general_sans_menu_5">
+     
+
+        [<div class="#EDIT{chapo} chapo surlignable">(#CHAPO|image_reduire{390,*})</div>]
+        [<div class="#EDIT{texte} texte surlignable">(#TEXTE|image_reduire{390,*})</div>]
+
+     </BOUCLE_de_rubrique>
+
+
+      #SET{articles,#ARRAY}
+      
+      <BOUCLE_news_cq(RUBRIQUES){id_mot=18}{!par date}{tout}{lang}>
+       <BOUCLE_articles_news(ARTICLES){id_rubrique}{!par date}{0,6}>
+        #SET{articles,#GET{articles}|push{#ID_ARTICLE}}
+       </BOUCLE_articles_news>
+      </BOUCLE_news_cq>
+        
+        
+      <BOUCLE_news(ARTICLES){id_article IN #GET{articles}}{!par date}>
+
+           <div class="un_encart_news_page">
+         
+            [<a href="#URL_ARTICLE">
+            (#LOGO_ARTICLE
+            |image_passe_partout{130,*}
+            |image_recadre{130,*}
+            |inserer_attribut{class,logo_article_news_page}
+            |inserer_attribut{alt,[(#TITRE|attribut_html|couper{80})]})
+            </a>]
+
+            [<div class="titre_news_page"><a href="#URL_ARTICLE">(#TITRE|couper{150}|supprimer_numero)</a></div>]
+            [<div class="paragraphe_news_page"><a href="#URL_ARTICLE">(#TEXTE|couper{250})</a></div>]
+
+            <br class="float_stop" />
+
+         </div>
+
+      </BOUCLE_news>
+        
+
+     </div> <!-- #colonne_cq_5 -->
+
+
+     <div id="colonne_general_6">
+
+       <!-- XXXXXXXXXXXXXXXXXXXX Si on est en "Batiment" (=mot clé 4), afficher les vignettes dans le colonne de droite -->
+
+       <BOUCLE_pour_portfolio(RUBRIQUES){id_rubrique}{0,1}{id_mot=4}>      
+
+        [(#INCLURE{fond=inclure/inc_vignettes_colonne_6,id_article, env})] [(#REM) = Vignettes dans la colonne de Gauche ]
+
+       </BOUCLE_pour_portfolio>
+
+
+     </div> <!-- #colonne_cq_6 -->
+
+    </div> <!-- #colonne_cq_4 -->
+
+   </div> <!-- #colonne_cq_2 -->
+
+   </div> <!-- #corps_contrat_quartier -->

@@ -40,18 +40,23 @@
   
 
 <div id="menu_accordeon_home">
+	
+	<BOUCLE_titre_non_deroulant(ARTICLES){id_rubrique IN 263,269} {lang}>
+    	[<div class="accordionButton"><a href="[(#URL_SITE)]">(#TITRE|supprimer_numero)</a></div>]
+    </BOUCLE_titre_non_deroulant>
 
-      <BOUCLE_rubr_menu_accordeon(RUBRIQUES){id_parent IN 259,265}{par num titre}{lang}>
+
+      <BOUCLE_rubr_menu_accordeon(RUBRIQUES){id_parent IN 259,265}{id_rubrique !==^(263|269)$}{par num titre}{lang}>
        <BOUCLE_article_menu_accordeon(ARTICLES) {id_rubrique} {par num titre}>
         [<div class="accordionButton">(#TITRE|supprimer_numero)</div>]
-        <div style="display: none;" class="accordionContent"><a href="[(#URL_SITE)]"><BOUCLE_documents_menu_accordeon(DOCUMENTS) {id_article} {mode=document}{extension IN png,jpg,gif} {par num titre, date}{doublons}{vu=non}{0,1}>
+        <div style="display: none;" class="accordionContent"><a href="[(#URL_SITE)]"><BOUCLE_documents_menu_accordeon(DOCUMENTS) {id_article} {mode=document}{extension IN png,jpg,gif} {par num titre, date}{0,1}>
                  [(#FICHIER
                  |image_reduire{760,0}
                  |image_recadre{760,230,center,'transparent'}
                  |inserer_attribut{alt, [(#TITRE|couper{80})]})]        
              </BOUCLE_documents_menu_accordeon></a><div class="accordion_bg_alpha"></div><div class="accordion_txt_zone">
              [<div class="#EDIT{texte} texte surlignable">(#TEXTE|couper{250})</div>]
-             <span class="lire_plus"><a href="[(#URL_SITE)]">Lire plus...</a></span>
+             <span class="lire_plus"><a href="[(#URL_SITE)]"><:lire_plus:></a></span>
         </div></div>
        </BOUCLE_article_menu_accordeon>
       </BOUCLE_rubr_menu_accordeon>       

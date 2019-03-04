@@ -51,11 +51,13 @@ dl dt { font-weight: bold; }
 dl dd {}
 
 /* Tableaux */
-table {}
+table {  
+	vertical-align:top;
+}
 caption { background: #EEE; }
 th { font-weight: bold; }
 thead th { background: #DDD; }
-th,td,caption { padding: 0.75em; }
+th,td,caption {  }
 tbody tr:nth-child(even) th,
 tbody tr:nth-child(even) td,
 tbody tr.even th,
@@ -86,7 +88,7 @@ samp { font-weight: bold; }
 var { font-style: italic; }
 
 /* Paragraphes */
-p, .p, dl, dd, blockquote, address, pre, table, fieldset { margin-bottom: 1.5em; }
+p, .p, dl, dd, blockquote, address, pre, fieldset { margin-bottom: 1.5em; }
 
 /* Liens */
 a {}

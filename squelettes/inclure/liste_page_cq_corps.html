@@ -3,19 +3,25 @@
 
      <h1 class="liste_page_cq_titre_1">[(#TITRE|supprimer_numero)]</h1>
      
-    <BOUCLE_rub_questceque(RUBRIQUES){id_trad=276}{lang}>
-         <div class="liste_page_cq cq_qu_est_ce"><a href="#URL_RUBRIQUE">#TITRE</a></div>
-    </BOUCLE_rub_questceque>
+         <div class="liste_page_cq cq_qu_est_ce"><multi>[fr]<a href="spip.php?rubrique295">Qu'est-ce que c'est ?</a> [nl]<a href="spip.php?rubrique296">Wat is dat?</a></multi></div>
 
 
-   
-    <BOUCLE_articles(RUBRIQUES) {id_parent=3} {par num titre}><div class="liste_page_cq liste_cq_#ID_RUBRIQUE">
-     <BOUCLE_1_ere_rubrique(RUBRIQUES) {id_parent} {par num titre}{0,1}>
-      <a href="#URL_RUBRIQUE" title="[(#TITRE|supprimer_numero)]">
-     </BOUCLE_1_ere_rubrique>
-     [(#TITRE|supprimer_numero)]</a></div>
-    </BOUCLE_articles> 
-       
+    <BOUCLE_cq(RUBRIQUES){id_trad=3}{lang}>
+      <BOUCLE_contrats(RUBRIQUES){id_parent}{par num titre,titre}>   
+    
+       <div class="liste_page_cq liste_cq_#ID_RUBRIQUE">
+
+    
+           <BOUCLE_1_ere_rubrique(RUBRIQUES) {id_parent} {par num titre}{0,1}>
+            <a href="#URL_RUBRIQUE">
+           </BOUCLE_1_ere_rubrique>
+           
+           [(#TITRE|supprimer_numero)]</a></div>
+
+    
+      </BOUCLE_contrats>
+    </BOUCLE_cq>
+
 
    </div> <!-- liste_cq_corps -->
-   
+

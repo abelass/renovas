@@ -3,7 +3,7 @@
 
 <div class="bloc clearfix" id="documents_portfolio">
 	<ul>
-     <BOUCLE_documents_portfolio(DOCUMENTS) {id_article} {mode=image}{extension IN png,jpg,gif} {par num titre, date}{doublons}{vu=non}>[
+     <BOUCLE_documents_portfolio(DOCUMENTS) {id_article}{mode=image}{extension IN png,jpg,gif} {par num titre, date}{doublons}{vu=non}>[
 		<li><a class="cboxElement hasbox" href="(#URL_DOCUMENT)" type="#MIME_TYPE" onclick="">[(#FICHIER
 			|image_passe_partout{130,130}
 			|image_recadre{130,130}

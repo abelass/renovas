@@ -9,16 +9,19 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
     'choisir_annee'=>'Choisissez une année',        
     'choisir_cq'=>'Choisissez un contrat de quartier',    
     'choisir_op'=>'Choisissez une opération',  
-    'contrat_quartier_durable'=>'Contrats de quartiers durables',  
-        
-      
+    'contrat_quartier_durable'=>'Revitalisation des quartiers',  
+    'contrat_quartier_durable_singulier'=>'Revitalisation des quartiers',  
+    'contrat_quartier_dur_able'=>'Revita- lisation des quartiers',  
+
     
     //D
     'date_debut'=>'Date début',
     'date_fin'=>'Date fin',
 
+
     //L
     'lire_suite'=>'Lire la suite',
+    'lire_plus'=>'Lire plus...', /* pour home page */ 
 );
 
 ?>

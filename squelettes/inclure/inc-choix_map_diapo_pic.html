@@ -20,7 +20,7 @@ var galleries = $('.ad-gallery').adGallery({
       <div class="ad-nav">
         <div class="ad-thumbs">
           <ul class="ad-thumb-list">
-            <BOUCLE_rubr_en_cours(ARTICLES){id_rubrique}{par num titre}> 
+            <BOUCLE_rubr_en_cours(ARTICLES){id_rubrique}{par titre, num titre}{0,5}> 
              <BOUCLE_documents_portfolio(DOCUMENTS) {id_article} {mode=document}{extension IN png,jpg,gif} {par num titre, date}{doublons}{vu=non}>
                <li>
                  <a href="

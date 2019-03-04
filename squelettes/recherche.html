@@ -12,6 +12,7 @@
 <meta name="robots" content="none" />
 
 <link href="#CHEMIN{design/css_renovas.css}" rel="stylesheet" type="text/css" media="all" />
+[(#INCLURE{fond=inclure/inc-cufon, env})][(#REM) Fonte introduite via Cufon ]
 [(#INCLURE{fond=inclure/inc-java_scripts, env})][(#REM) javascripts etc ]
 
 </head>
@@ -19,35 +20,36 @@
 <body class="pas_surlignable page_recherche">
     <div id="outer_container">
  [(#INCLURE{fond=inclure/inc-en_tete,id_rubrique,id_article,lang})][(#REM) menu de l'en-tête ]        
-        <div id="fil_ariane">
-       		<a href="#URL_SITE_SPIP/"><:accueil_site:></a> <img src="squelettes/design/fleche_ariane.png" class="fleche_ariane" alt="fleche" /> <:info_rechercher:>[ <img src="squelettes/design/fleche_ariane.png" class="fleche_ariane" alt="fleche" /> <strong class="on">(#RECHERCHE)</strong>]
+       
+       <div id="fil_ariane"><a href="#URL_SITE_SPIP/"><:accueil_site:></a> <img src="squelettes/design/fleche_ariane.png" class="fleche_ariane" alt="fleche" /> <:info_rechercher:>[ <img src="squelettes/design/fleche_ariane.png" class="fleche_ariane" alt="fleche" /> <strong class="on">(#RECHERCHE)</strong>]</div>
 
-		</div>
-	
+
 <div id="corps_contrat_quartier"[ class="racine_cq_(#GET{racine_cq})"]>
-   <div id="colonne_cq_1">    
-       &nbsp;
-   </div> <!-- #colonne_cq_1 -->      
+
+   <div id="colonne_cq_1">&nbsp;</div> <!-- #colonne_cq_1 -->      
 
    <div id="colonne_cq_2">
+
     <div id="ligne_au_dessus_titre"> </div>
-      <h1 class="cq_titre_1"><:resultats_recherche:></h1>
 
-    <div id="logo_cq_">
-    [<img src="(#CHEMIN{design/logos_cq/#GET{racine_cq}.jpg})" />]
-   </div>
+     <BOUCLE_titre_rubrique(RUBRIQUES){id_trad=#GET{racine_cq}}{lang}>
+       <h1 class="general_titre_1">[<span class="titre_en_gras"> (#TITRE|supprimer_numero)</class>]</h1>
+     </BOUCLE_titre_rubrique>
 
 
-   <div id="colonne_cq_3">
-   	<div id="menu_vide">&nbsp;</div>
+    </BOUCLE_titre_si_plusieurs_articles>
+
+    </B_titre_si_plusieurs_articles>
+
+
+   <div id="colonne_general_3">
    </div> <!-- #colonne_cq_3 -->
 
-    
-    <div id="colonne_cq_4">
-    
-     [(#INCLURE{fond=inclure/inc-choix_map_diapo_pic,id_rubrique,id_article,env})]
-    
-     <div id="colonne_cq_5">
+
+    <div id="colonne_general_4">
+     <!-- pas de zone pour carte etc. -->
+
+     <div id="colonne_general_sans_menu_5">
 
 			<p class="soustitre">&#171;&nbsp;(#RECHERCHE)&nbsp;&#187;</p>
 			

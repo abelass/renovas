@@ -1,14 +1,11 @@
 <BOUCLE_niveler(RUBRIQUES){id_trad=#ENV{racine_cq}}{lang}>
     <BOUCLE_enfant(RUBRIQUES){id_enfant}{id_trad==3}>
         <B_liste_cq_fr>   
-        <div id="cq_box_deroulante"><:contrat_quartier_durable:></div>
+        <div id="cq_box_deroulante"><:contrat_quartier_dur_able:></div>
     	<div id="cq_deroule">
     	  
 		  		  
-		 <BOUCLE_rub_questceque(RUBRIQUES){id_trad=276}{lang}>
-           <div class="liste_cq cq_qu_est_ce"><a href="#URL_RUBRIQUE" title="[(#TITRE|supprimer_numero)]">[(#TITRE|supprimer_numero)]</a></div>
-		 </BOUCLE_rub_questceque>
-	
+           <div class="liste_cq cq_qu_est_ce"><multi>[fr]<a href="spip.php?rubrique295">Qu'est-ce que c'est ?</a> [nl]<a href="spip.php?rubrique296">Wat is dat?</a></multi></div>
 	
           
     	  <BOUCLE_liste_cq_fr(RUBRIQUES) {id_parent} {par num titre}>
@@ -24,8 +21,8 @@
 
 <script type="text/javascript">
 /* Dérouler la liste des CQ */
-$(function() {
-  $("#cq_deroule").hide(); /* Fermer par défaut */
+$(function() {  
+/*  $("#cq_deroule").hide();  Fermer par défaut */
   $("#cq_box_deroulante").click(function () {
     if ($("#cq_deroule").is(":hidden")) {
         $("#cq_deroule").slideDown(650);

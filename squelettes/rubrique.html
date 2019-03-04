@@ -86,11 +86,28 @@ $(document).ready(function() {
     <INCLURE{fond=inclure/corps_rubr_home,env,titre,id_rubrique,id_trad}/>
     #SET{defaut,''}
 ]
-    
-    
- [(#GET{defaut}|oui)
+
+
+
+[(#ID_TRAD|in_array{#LISTE{26,27,32,33,34,273}}|oui)
+    <INCLURE{fond=inclure/corps_rubr_general_sans_menu,env,titre}/>
+    #SET{defaut,''}
+]
+[(#ID_TRAD|in_array{#LISTE{31,275,276,277,278,279,280,281,282,293,295}}|oui)
+    <INCLURE{fond=inclure/corps_rubr_general_avec_menu,env,titre}/>
+    #SET{defaut,''}
+]
+
+[(#REM) rubrique News ]
+[(#ID_TRAD|=={271}|oui)
+    <INCLURE{fond=inclure/corps_rubr_news,env,titre,id_rubrique,id_trad}/>
+    #SET{defaut,''}
+]
+
+
+[(#GET{defaut}|oui)
     <INCLURE{fond=inclure/corps_contrat_quartier,env,id_trad,ajax}/>
-    ]
+]
 
    <!-- Pied de page -->
    [(#INCLURE{fond=inclure/inc-footer,lang})]
@@ -100,4 +117,5 @@ $(document).ready(function() {
 </html>
 </BOUCLE_principale>
     <INCLURE{fond=map,env,id_rubrique}/>
+	<div id="carte_en_construction">Page en construction <br />Pagina in aanbouw</div>
 <//B_principale>

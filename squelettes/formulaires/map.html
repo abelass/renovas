@@ -3,26 +3,34 @@
 	[<p class="reponse_formulaire reponse_formulaire_erreur">(#ENV*{message_erreur})</p>]
 
 	<form method='get' action='#ENV{action}'><div>
+      [<img class="logo_de_map" src="(#CHEMIN{design/logo_de_map.png})" />]
+      <div class="titre_form_map"><multi>[fr]Carte interactive de Schaebeek[nl]Interactieve kaart van Schaarbeek</multi></div>
+    
 		#ACTION_FORMULAIRE{#ENV{action}}
 		<ul>
 		    <li>
-		        <label for="cq"><:choisir_cq:></label>
+		        <label for="cq" class="titre_form_map"><:choisir_cq:></label>
 		        <BOUCLE_cq(RUBRIQUES){id_trad=3}{lang}>
 		          <BOUCLE_contrats(RUBRIQUES){id_parent}{par num titre,titre}>
 		          <div class="choix">
+                   <div class="un_item_cq_form_map liste_cq_#ID_RUBRIQUE">
                     <input id="cq_#ID_RUBRIQUE" class="checkbox" type="checkbox" value="#ID_RUBRIQUE" name="cq[]"
                     [(#ID_RUBRIQUE|in_array{#ENV{cq,#ARRAY}}|oui)checked="checked"]/>
                     <label for="cq_#ID_RUBRIQUE">#TITRE</label>
-                    </div>
+                   </div>
+                  </div>
 		          </BOUCLE_contrats>
 		        </BOUCLE_cq>
 		    </li>
             <li>
-                <label for="op"><:choisir_op:></label>
+                <label for="op" class="titre_form_map"><:choisir_op:></label>
                 <BOUCLE_op(MOTS){id_groupe=2}>
                   <div class="choix">
                     <input id="op_#ID_MOT" class="checkbox" type="checkbox" value="#ID_MOT" name="op[]"
                     [(#ID_MOT|in_array{#ENV{op,#ARRAY}}|oui)checked="checked"]/>
+
+  [(#CHEMIN{images/marker_#ID_MOT.png}|image_passe_partout{32,32}|image_recadre{32,32})]
+  
                     <label for="op_#ID_MOT">#TITRE</label>
                     </div>
                 </BOUCLE_op>
@@ -36,7 +44,7 @@
                   </BOUCLE_annees>
                 </BOUCLE_cq2>
 
-                <label for="annee"><:choisir_annee:></label>
+                <label for="annee" class="titre_form_map"><:choisir_annee:></label>
                 <select name="annee">
                     <option value=""> </option>
                 <BOUCLE_arranger(DATA){source tableau,#GET{annee}}{!par cle}>

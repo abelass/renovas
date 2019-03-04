@@ -52,10 +52,7 @@
      <BOUCLE_titre_rubrique(RUBRIQUES){id_trad=#GET{racine_cq}}{lang}>
 
      <h1 class="cq_titre_1">
-        <BOUCLE_cq(RUBRIQUES){id_enfant}{id_trad=3}>
-        #TITRE
-        </BOUCLE_cq>
-        [<span class="titre_en_gras"> (#TITRE|supprimer_numero)</class>]
+       [<span class="titre_en_gras">(#DESCRIPTIF)</class>]
      </h1>
 
      </BOUCLE_titre_rubrique>
@@ -121,21 +118,12 @@
     
 
      
-
-    <BOUCLE_chapo_du_haut(RUBRIQUES){id_rubrique}>
-
-     [<div class="#EDIT{texte} chapo surlignable">(#TEXTE|image_reduire{390,*})</div>]
-
-    </BOUCLE_chapo_du_haut>
-
+<!-- plus ici -->
     
 
     [(#GET{se}|?{
-
         #INCLURE{fond=inclure/inc-corps_contrat_quartier_se,env},
-
         #INCLURE{fond=inclure/inc-corps_contrat_quartier_defaut,env},
-
         })]
 
 
@@ -155,35 +143,25 @@
 
        </BOUCLE_article>
 
-       
-
     <//B_article_si_plusieurs_articles>
-
-
-
        
 
      </div> <!-- #colonne_cq_5 -->
 
-
-
-
-
      <div id="colonne_cq_6">
 
-       <!-- XXXXXXXXXXXXXXXXXXXX Si on est en "Batiment" (=mot clé 4), afficher les vignettes dans le colonne de droite -->
+       <!--  Si on est en "Batiment" (=mot clé 4), afficher les vignettes dans le colonne de droite -->
 
        <BOUCLE_pour_portfolio(RUBRIQUES){id_rubrique}{0,1}{id_mot=4}>      
-
         [(#INCLURE{fond=inclure/inc_vignettes_colonne_6,id_article, env})] [(#REM) = Vignettes dans la colonne de Gauche ]
-
        </BOUCLE_pour_portfolio>
 
 
+       <!--  Afficher des news si nécessaire -->
+       <INCLURE{fond=inclure/inc_news_colonne_6,env,racine_cq=#GET{racine_cq}}>
+
 
      </div> <!-- #colonne_cq_6 -->
-
-
 
     </div> <!-- #colonne_cq_4 -->
 
