@@ -19,7 +19,7 @@
 <link href="#CHEMIN{design/css_renovas.css}" rel="stylesheet" type="text/css" media="all" />
 
 <!--[if IE]>
-    <link type="text/css" rel="stylesheet" href="#CHEMIN{design/ie.css}" />
+	<link type="text/css" rel="stylesheet" href="#CHEMIN{design/ie.css}" />
 <![endif]-->
 
 
@@ -30,27 +30,27 @@
 [(#ID_TRAD|=={25}|oui)
 <script type="text/javascript">
 $(document).ready(function() {
-    
-    /********************************************************************************************************************
-    SIMPLE ACCORDIAN STYLE MENU FUNCTION
-    ********************************************************************************************************************/   
-    /* JS menu accordeon rubr 25 */
+	
+	/********************************************************************************************************************
+	SIMPLE ACCORDIAN STYLE MENU FUNCTION
+	********************************************************************************************************************/   
+	/* JS menu accordeon rubr 25 */
 
 	$('div.accordionButton_conseil_renov').click(function() {
 		
-        $("div.accordionButton_conseil_renov").css({'background-image' : 'url(squelettes/design/fleche_home_ferme.png)'}); /* RAZ */
-        $('div.accordionContent_conseil_reno').slideUp('normal');   
+		$("div.accordionButton_conseil_renov").css({'background-image' : 'url(squelettes/design/fleche_home_ferme.png)'}); /* RAZ */
+		$('div.accordionContent_conseil_reno').slideUp('normal');   
 		
-        if ($(this).next().is(':hidden')) { /* refermer uniquement si ouvert */
-        	$(this).css({'background-image' : 'url(squelettes/design/fleche_home_ouvert.png)'}); /* RAZ */
+		if ($(this).next().is(':hidden')) { /* refermer uniquement si ouvert */
+			$(this).css({'background-image' : 'url(squelettes/design/fleche_home_ouvert.png)'}); /* RAZ */
 			$(this).next().slideDown('normal');
 		}
-    });
+	});
 
-    /********************************************************************************************************************
-    CLOSES ALL DIVS ON PAGE LOAD
-    ********************************************************************************************************************/   
-    $("div.accordionContent_conseil_reno_conseil_reno").hide();
+	/********************************************************************************************************************
+	CLOSES ALL DIVS ON PAGE LOAD
+	********************************************************************************************************************/   
+	$("div.accordionContent_conseil_reno_conseil_reno").hide();
 
 
  $(".accordion_bg_alpha").animate({"opacity": "0.8"}, 0);
@@ -58,7 +58,7 @@ $(document).ready(function() {
 </script>
 ]
 [(#ID_TRAD|=={1}|oui)
-    <INCLURE{fond=inclure/inc-javascript_home}/>
+	<INCLURE{fond=inclure/inc-javascript_home}/>
 ]
 
 </head>
@@ -66,56 +66,56 @@ $(document).ready(function() {
  <div id="outer_container">
   [(#INCLURE{fond=inclure/inc-en_tete,id_rubrique,lang})][(#REM) menu de l'en-tête ]
 
-    <div id="fil_ariane">
-     <BOUCLE_ariane(HIERARCHIE){id_rubrique}{id_rubrique}>
-    [(#COMPTEUR_BOUCLE|!={1}|oui) <img src="#CHEMIN{design/fleche_ariane.png}" class="fleche_ariane" alt="fleche" /> ]
-     <a href="#URL_RUBRIQUE">[(#TITRE|couper{80})]</a></BOUCLE_ariane>[ <img src="#CHEMIN{design/fleche_ariane.png}" class="fleche_ariane" alt="fleche" /> <strong class="on">(#TITRE|couper{80})</strong>]
-    </div>
-    
+	<div id="fil_ariane">
+	<BOUCLE_ariane(HIERARCHIE){id_rubrique}{id_rubrique}>
+	[(#COMPTEUR_BOUCLE|!={1}|oui) <img src="#CHEMIN{design/fleche_ariane.png}" class="fleche_ariane" alt="fleche" /> ]
+		<a href="#URL_RUBRIQUE">[(#TITRE|couper{80})]</a></BOUCLE_ariane>[ <img src="#CHEMIN{design/fleche_ariane.png}" class="fleche_ariane" alt="fleche" /> <strong class="on">(#TITRE|couper{80})</strong>]
+	</div>
+	
 [(#ID_TRAD|=={3}|oui)
-    <INCLURE{fond=inclure/liste_page_cq_corps,env,titre}/>
-    #SET{defaut,''}
+	<INCLURE{fond=inclure/liste_page_cq_corps,env,titre}/>
+	#SET{defaut,''}
 ]
 
 [(#ID_TRAD|in_array{#LISTE{25,1000}}|oui)
-    <INCLURE{fond=inclure/corps_rubr_conseil_renov,env,titre}/>
-    #SET{defaut,''}
+	<INCLURE{fond=inclure/corps_rubr_conseil_renov,env,titre}/>
+	#SET{defaut,''}
 ]
 
 [(#ID_TRAD|=={1}|oui)
-    <INCLURE{fond=inclure/corps_rubr_home,env,titre,id_rubrique,id_trad}/>
-    #SET{defaut,''}
+	<INCLURE{fond=inclure/corps_rubr_home,env,titre,id_rubrique,id_trad}/>
+	#SET{defaut,''}
 ]
 
 
 
 [(#ID_TRAD|in_array{#LISTE{26,27,32,33,34,273}}|oui)
-    <INCLURE{fond=inclure/corps_rubr_general_sans_menu,env,titre}/>
-    #SET{defaut,''}
+	<INCLURE{fond=inclure/corps_rubr_general_sans_menu,env,titre}/>
+	#SET{defaut,''}
 ]
 [(#ID_TRAD|in_array{#LISTE{31,275,276,277,278,279,280,281,282,293,295}}|oui)
-    <INCLURE{fond=inclure/corps_rubr_general_avec_menu,env,titre}/>
-    #SET{defaut,''}
+	<INCLURE{fond=inclure/corps_rubr_general_avec_menu,env,titre}/>
+	#SET{defaut,''}
 ]
 
 [(#REM) rubrique News ]
 [(#ID_TRAD|=={271}|oui)
-    <INCLURE{fond=inclure/corps_rubr_news,env,titre,id_rubrique,id_trad}/>
-    #SET{defaut,''}
+	<INCLURE{fond=inclure/corps_rubr_news,env,titre,id_rubrique,id_trad}/>
+	#SET{defaut,''}
 ]
 
 
 [(#GET{defaut}|oui)
-    <INCLURE{fond=inclure/corps_contrat_quartier,env,id_trad,ajax}/>
+	<INCLURE{fond=inclure/corps_contrat_quartier,env,id_trad,ajax}/>
 ]
 
-   <!-- Pied de page -->
-   [(#INCLURE{fond=inclure/inc-footer,lang})]
+  <!-- Pied de page -->
+  [(#INCLURE{fond=inclure/inc-footer,lang})]
 
  </div><!-- #outer_container -->
 </body>
 </html>
 </BOUCLE_principale>
-    <INCLURE{fond=map,env,id_rubrique}/>
+	<INCLURE{fond=map,env,id_rubrique}/>
 	<div id="carte_en_construction">Page en construction <br />Pagina in aanbouw</div>
 <//B_principale>
