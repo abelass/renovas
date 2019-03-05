@@ -1,7 +1,36 @@
+@font-face {
+		font-family: 'Helvetica-Neue-Interface';
+		src:url('webfonts/Helvetica-Neue-Interface/Helvetica-Neue-Interface.ttf.woff') format('woff'),
+				url('webfonts/Helvetica-Neue-Interface/webfonts/Helvetica-Neue-Interface/webfonts/Helvetica-Neue-Interface/Helvetica-Neue-Interface.ttf.svg#Helvetica-Neue-Interface') format('svg'),
+				url('webfonts/Helvetica-Neue-Interface/webfonts/Helvetica-Neue-Interface/Helvetica-Neue-Interface.ttf.eot'),
+				url('webfonts/Helvetica-Neue-Interface/Helvetica-Neue-Interface.ttf.eot?#iefix') format('embedded-opentype'); 
+		font-weight: normal;
+		font-style: normal;
+}
+
+h1,
+h2,
+h3,
+#ligne_head_1,
+#ligne_head_2,
+#ligne_head_3,
+#ligne_head_4,
+.increaseFont,
+.decreaseFont,
+.bouton_langue_fr,
+.bouton_langue_nl,
+.accordionButton
+#ligne_head_1 a:hover, 
+#ligne_head_2 a:hover, 
+#ligne_head_3 a:hover, 
+#ligne_head_4  a:hover {
+	font-family: 'Helvetica-Neue-Interface';
+}
+
 html { font-size: 100%; }
 
 body {
-	font-family:Helvetica Neue, Helvetica, Arial, Sans serif;
+	font-family:Helvetica-Neue-Interface, Helvetica, Arial, Sans serif;
 	font-size: 0.8em;
 	color: #000;
 	padding: 0;
