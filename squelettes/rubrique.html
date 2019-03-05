@@ -64,7 +64,7 @@ $(document).ready(function() {
 	<div id="fil_ariane">
 	<BOUCLE_ariane(HIERARCHIE){id_rubrique}{id_rubrique}>
 	[(#COMPTEUR_BOUCLE|!={1}|oui) <img src="#CHEMIN{design/fleche_ariane.png}" class="fleche_ariane" alt="fleche" /> ]
-		<a href="#URL_RUBRIQUE">[(#TITRE|couper{80})]</a></BOUCLE_ariane>[ <img src="#CHEMIN{design/fleche_ariane.png}" class="fleche_ariane" alt="fleche" /> <strong class="on">(#TITRE|couper{80})</strong>]
+		<a href="#URL_RUBRIQUE">[(#TITRE|couper{80})]</a></BOUCLE_ariane> <img src="#CHEMIN{design/fleche_ariane.png}" class="fleche_ariane" alt="fleche" /></B_ariane> [<strong class="on">(#TITRE|couper{80})</strong>]
 	</div>
 	
 [(#ID_TRAD|=={3}|oui)
