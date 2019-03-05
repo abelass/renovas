@@ -22,11 +22,6 @@
 	<link type="text/css" rel="stylesheet" href="#CHEMIN{design/ie.css}" />
 <![endif]-->
 
-
-[(#ID_TRAD|=={1}|non)
-<!-- j'ai enlevé le JS du diaporama pour le placer dans inc-choix_map_diapo_pic.html -->
-]
-
 [(#ID_TRAD|=={25}|oui)
 <script type="text/javascript">
 $(document).ready(function() {
@@ -110,7 +105,8 @@ $(document).ready(function() {
 ]
 
   <!-- Pied de page -->
-  [(#INCLURE{fond=inclure/inc-footer,lang})]
+  #SET{lien_facebook,#INCLURE{fond=inclure/lien_facebook}|unserialize}
+  <INCLURE{fond=inclure/inc-footer,lang,id_rubrique,lien_facebook=#GET{lien_facebook}} />
 
  </div><!-- #outer_container -->
 </body>
