@@ -146,12 +146,9 @@ $(document).ready(function(){
     $('h3.cq_titre_3').css('font-size', '17px');
     $('#colonne_cq_5').css('font-size', '1em');
     $('#colonne_cq_6').css('font-size', '0.8em');
-
-
-	$.cookie('taille_fonte_h3', originalFontSize, { expires: -1, path: '/' }); /*effacer le cookie */
-	$.cookie('taille_fonte_col5', originalFontSize, { expires: -1, path: '/' }); /*effacer le cookie */
-	$.cookie('taille_fonte_col6', originalFontSize, { expires: -1, path: '/' }); /*effacer le cookie */
-
+    Cookies.set('taille_fonte_h3', originalFontSize, { expires: -1, path: '/' });/*effacer le cookie */
+    Cookies.set('taille_fonte_col5', originalFontSize, { expires: -1, path: '/' });/*effacer le cookie */
+    Cookies.set('taille_fonte_col6', originalFontSize, { expires: -1, path: '/' });/*effacer le cookie */
   });  
 
   
