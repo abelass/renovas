@@ -59,7 +59,7 @@ $(document).ready(function() {
 </head>
 <body>
  <div id="outer_container">
-  [(#INCLURE{fond=inclure/inc-en_tete,id_rubrique,lang})][(#REM) menu de l'en-tête ]
+	[(#INCLURE{fond=inclure/inc-en_tete,id_rubrique,lang})][(#REM) menu de l'en-tête ]
 
 	<div id="fil_ariane">
 	<BOUCLE_ariane(HIERARCHIE){id_rubrique}{id_rubrique}>
@@ -104,9 +104,34 @@ $(document).ready(function() {
 	<INCLURE{fond=inclure/corps_contrat_quartier,env,id_trad,ajax}/>
 ]
 
-  <!-- Pied de page -->
-  #SET{lien_facebook,#INCLURE{fond=inclure/lien_facebook}|unserialize}
-  <INCLURE{fond=inclure/inc-footer,lang,id_rubrique,lien_facebook=#GET{lien_facebook}} />
+	<!-- Pied de page -->
+
+	[(#REM) Trouver le bon lien Facebook]
+	[(#REM) la définition des liens]
+	#SET{lien_facebook,#INCLURE{fond=inclure/lien_facebook}|unserialize}
+	
+	[(#REM) les secteurs des quartiers]
+	#SET{secteurs,
+		#ARRAY{
+			fr,3,
+			nl,4,
+		}
+	}
+
+	[(#REM) les secteurs des quartiers]
+	#SET{quartiers,#ARRAY}
+	<BOUCLE_branche(RUBRIQUES){branche #GET{secteurs}|table_valeur{#LANG}}{profondeur=2}>
+		#SET{quartiers,#GET{quartiers}|push{#ID_RUBRIQUE}}
+	</BOUCLE_branche>
+
+	[(#REM) L'id secteur de la rubrique en cours]
+	#SET{id_quartier,#ID_RUBRIQUE|get_id_secteur{#GET{quartiers}}}
+
+
+	<INCLURE{fond=inclure/inc-footer,
+		lang,
+		id_rubrique=#GET{id_quartier},
+		lien_facebook=#GET{lien_facebook}} />
 
  </div><!-- #outer_container -->
 </body>

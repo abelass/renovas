@@ -58,8 +58,13 @@
    RenovaS is lid van het <a href="http://www.lereseauhabitat.net/" target="_blank"> Netwerk Wonen</a>
    </div>]
 
+[(#ENV{lien_facebook}|table_valeur{#ID_RUBRIQUE}|?{
+  #SET{lien_facebook,#ENV{lien_facebook}|table_valeur{#ID_RUBRIQUE}},
+  #SET{lien_facebook,#ENV{lien_facebook}|table_valeur{defaut}}
+})]
+
 [<div class="sticky_fb_button">
-  <a href="(#ENV{lien_facebook}|table_valeur{#ID_RUBRIQUE})" target="_blank"><span class="st_fb_butt"><img src="#CHEMIN{design/fb_button.png}" alt"Facebook" /></span></a> 
+  <a href="(#GET{lien_facebook})" target="_blank"><span class="st_fb_butt"><img src="#CHEMIN{design/fb_button.png}" alt="Facebook" /></span></a> 
 </div>]
 
 </div> <!-- #footer -->
