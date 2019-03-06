@@ -6,8 +6,8 @@ $(document).ready(function(){
 
 
   /* récup taille fonte si mémorisée dans cookie */
-  if($.cookie('taille_fonte_h3')) { 
-	var taille_via_cookie = $.cookie("taille_fonte_h3") ;
+  if(Cookies.get('taille_fonte_h3')) { 
+	var taille_via_cookie = Cookies.get('taille_fonte_h3') ;
     var taille_via_cookie = parseFloat(taille_via_cookie, 10);
 
     $('h3.cq_titre_3').css('font-size', taille_via_cookie);
@@ -15,8 +15,8 @@ $(document).ready(function(){
 
 
 
-  if($.cookie('taille_fonte_col5')) {  
-	var taille_via_cookie = $.cookie("taille_fonte_col5") ;
+  if(Cookies.get('taille_fonte_col5')) {  
+	var taille_via_cookie = Cookies.get('taille_fonte_col5');
     var taille_via_cookie = parseFloat(taille_via_cookie, 10);
 
     $('#colonne_cq_5').css('font-size', taille_via_cookie);
@@ -27,8 +27,8 @@ $(document).ready(function(){
 
 
 
-  if($.cookie('taille_fonte_col6')) {  
-	var taille_via_cookie = $.cookie("taille_fonte_col6") ;
+  if(Cookies.get('taille_fonte_col6')) {  
+	var taille_via_cookie = Cookies.get('taille_fonte_col6');
     var taille_via_cookie = parseFloat(taille_via_cookie, 10);
 
     $('#colonne_cq_6').css('font-size', taille_via_cookie);
@@ -47,29 +47,27 @@ $(document).ready(function(){
     var currentFontSizeNum = parseFloat(currentFontSize, 10);
     var newFontSize = currentFontSizeNum*1.2;
     $('h3.cq_titre_3').css('font-size', newFontSize);
-	$.cookie('taille_fonte_h3', newFontSize, { expires: 7, path: '/' });
-	
-
+    Cookies.set('taille_fonte_h3', newFontSize, { expires: 7, path: '/' });
 
     var currentFontSize = $('#colonne_cq_5').css('font-size');
     var currentFontSizeNum = parseFloat(currentFontSize, 10);
     var newFontSize = currentFontSizeNum*1.2;
     $('#colonne_cq_5').css('font-size', newFontSize);
-	$.cookie('taille_fonte_col5', newFontSize, { expires: 7, path: '/' });
+    Cookies.set('taille_fonte_col5', newFontSize, { expires: 7, path: '/' });
 	
 
     var currentFontSize = $('#colonne_general_5').css('font-size');
     var currentFontSizeNum = parseFloat(currentFontSize, 10);
     var newFontSize = currentFontSizeNum*1.2;
     $('#colonne_general_5').css('font-size', newFontSize);
-	$.cookie('taille_fonte_col5', newFontSize, { expires: 7, path: '/' });
+    Cookies.set('taille_fonte_col5', newFontSize, { expires: 7, path: '/' });
 	
 
     var currentFontSize = $('#colonne_general_sans_menu_5').css('font-size');
     var currentFontSizeNum = parseFloat(currentFontSize, 10);
     var newFontSize = currentFontSizeNum*1.2;
     $('#colonne_general_sans_menu_5').css('font-size', newFontSize);
-	$.cookie('taille_fonte_col5', newFontSize, { expires: 7, path: '/' });
+	 Cookies.set('taille_fonte_col5', newFontSize, { expires: 7, path: '/' });
 	
 
 
@@ -77,7 +75,7 @@ $(document).ready(function(){
     var currentFontSizeNum = parseFloat(currentFontSize, 10);
     var newFontSize = currentFontSizeNum*1.2;
     $('#colonne_cq_6').css('font-size', newFontSize);
-	$.cookie('taille_fonte_col6', newFontSize, { expires: 7, path: '/' });
+    Cookies.set('taille_fonte_col6', newFontSize, { expires: 7, path: '/' });
 
 
     return false;
@@ -94,7 +92,7 @@ $(document).ready(function(){
     var currentFontSizeNum = parseFloat(currentFontSize, 10);
     var newFontSize = currentFontSizeNum*0.8;
     $('h3.cq_titre_3').css('font-size', newFontSize);
-	$.cookie('taille_fonte_h3', newFontSize, { expires: 7, path: '/' });
+    Cookies.set('taille_fonte_h3', newFontSize, { expires: 7, path: '/' });
 
 
 
@@ -106,21 +104,22 @@ $(document).ready(function(){
     $('#colonne_cq_5').css('font-size', newFontSize);
     $('#colonne_general_5').css('font-size', newFontSize);
     $('#colonne_general_sans_menu_5').css('font-size', newFontSize);
-	$.cookie('taille_fonte_col5', newFontSize, { expires: 7, path: '/' });
+    Cookies.set('taille_fonte_col5', newFontSize, { expires: 7, path: '/' });
 
 
     var currentFontSize = $('#colonne_general_5').css('font-size');
     var currentFontSizeNum = parseFloat(currentFontSize, 10);
     var newFontSize = currentFontSizeNum*0.8;
     $('#colonne_general_5').css('font-size', newFontSize);
-	$.cookie('taille_fonte_col5', newFontSize, { expires: 7, path: '/' });
+
+    Cookies.set('taille_fonte_col5', newFontSize, { expires: 7, path: '/' });
 
 
     var currentFontSize = $('#colonne_general_sans_menu_5').css('font-size');
     var currentFontSizeNum = parseFloat(currentFontSize, 10);
     var newFontSize = currentFontSizeNum*0.8;
     $('#colonne_general_sans_menu_5').css('font-size', newFontSize);
-	$.cookie('taille_fonte_col5', newFontSize, { expires: 7, path: '/' });
+    Cookies.set('taille_fonte_col5', newFontSize, { expires: 7, path: '/' });
 
 	
 
@@ -128,8 +127,7 @@ $(document).ready(function(){
     var currentFontSizeNum = parseFloat(currentFontSize, 10);
     var newFontSize = currentFontSizeNum*0.8;
     $('#colonne_cq_6').css('font-size', newFontSize);
-	$.cookie('taille_fonte_col6', newFontSize, { expires: 7, path: '/' });
-
+    Cookies.set('taille_fonte_col6', newFontSize, { expires: 7, path: '/' });
 
     return false;
 
