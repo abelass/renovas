@@ -1317,7 +1317,7 @@ z-index: 10; ren 2017 LOCAL
 	position: absolute; 
 	left:4em; 
 	top:1em; 
-	z-index:200;
+	z-index:500;
 	text-transform:uppercase;
 	
 	background:#404040; 
