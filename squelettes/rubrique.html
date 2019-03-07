@@ -1,5 +1,6 @@
 <BOUCLE_principale(RUBRIQUES) {id_rubrique}{id_trad!=264}>
 #SET{defaut,oui}
+#SET{racine_cq,#INCLURE{fond=inclure/get_id_secteur,id_rubrique}}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 [(#REM) Cf.: http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/
 ]<!--[if lt IE 7 ]> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js ie ie6"> <![endif]-->
@@ -85,11 +86,11 @@ $(document).ready(function() {
 
 
 [(#ID_TRAD|in_array{#LISTE{26,27,32,33,34,273}}|oui)
-	<INCLURE{fond=inclure/corps_rubr_general_sans_menu,env,titre}/>
+	<INCLURE{fond=inclure/corps_rubr_general_sans_menu,racine_cq=#GET{racine_cq},env,titre}/>
 	#SET{defaut,''}
 ]
 [(#ID_TRAD|in_array{#LISTE{31,275,276,277,278,279,280,281,282,293,295}}|oui)
-	<INCLURE{fond=inclure/corps_rubr_general_avec_menu,env,titre}/>
+	<INCLURE{fond=inclure/corps_rubr_general_avec_menu,racine_cq=#GET{racine_cq},env,titre}/>
 	#SET{defaut,''}
 ]
 
@@ -101,9 +102,8 @@ $(document).ready(function() {
 
 
 [(#GET{defaut}|oui)
-	<INCLURE{fond=inclure/corps_contrat_quartier,env,id_trad,ajax}/>
+	<INCLURE{fond=inclure/corps_contrat_quartier,racine_cq=#GET{racine_cq},env,id_trad,ajax}/>
 ]
-
 	<!-- Pied de page -->
 
 	[(#REM) Trouver le bon lien Facebook]
@@ -111,26 +111,9 @@ $(document).ready(function() {
 	#SET{lien_facebook,#INCLURE{fond=inclure/lien_facebook}|unserialize}
 	
 	[(#REM) les secteurs des quartiers]
-	#SET{secteurs,
-		#ARRAY{
-			fr,3,
-			nl,4,
-		}
-	}
-
-	[(#REM) les secteurs des quartiers]
-	#SET{quartiers,#ARRAY}
-	<BOUCLE_branche(RUBRIQUES){branche #GET{secteurs}|table_valeur{#LANG}}{profondeur=2}>
-		#SET{quartiers,#GET{quartiers}|push{#ID_RUBRIQUE}}
-	</BOUCLE_branche>
-
-	[(#REM) L'id secteur de la rubrique en cours]
-	#SET{id_quartier,#ID_RUBRIQUE|get_id_secteur{#GET{quartiers}}}
-
-
 	<INCLURE{fond=inclure/inc-footer,
 		lang,
-		id_rubrique=#GET{id_quartier},
+		id_rubrique=#GET{racine_cq},
 		lien_facebook=#GET{lien_facebook}} />
 
  </div><!-- #outer_container -->
