@@ -1,5 +1,6 @@
 <BOUCLE_principale(RUBRIQUES) {id_rubrique}{id_trad!=264}>
 #SET{defaut,oui}
+#SET{racine_cq,#INCLURE{fond=inclure/get_id_secteur,id_rubrique}}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 [(#REM) Cf.: http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/
 ]<!--[if lt IE 7 ]> <html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js ie ie6"> <![endif]-->
@@ -17,42 +18,35 @@
 <link rel="alternate" type="application/rss+xml" title="<:syndiquer_rubrique:>" href="[(#URL_PAGE{backend}|parametre_url{id_rubrique,#ID_RUBRIQUE})]" />
 
 <link href="#CHEMIN{design/css_renovas.css}" rel="stylesheet" type="text/css" media="all" />
-[(#INCLURE{fond=inclure/inc-cufon, env})][(#REM) Fonte introduite via Cufon ]
-[(#INCLURE{fond=inclure/inc-java_scripts, env})][(#REM) javascripts etc ]
-
+[(#INCLURE{fond=inclure/inc-java_scripts, env})]
 <!--[if IE]>
-    <link type="text/css" rel="stylesheet" href="#CHEMIN{design/ie.css}" />
+	<link type="text/css" rel="stylesheet" href="#CHEMIN{design/ie.css}" />
 <![endif]-->
-
-
-[(#ID_TRAD|=={1}|non)
-<!-- j'ai enlevé le JS du diaporama pour le placer dans inc-choix_map_diapo_pic.html -->
-]
 
 [(#ID_TRAD|=={25}|oui)
 <script type="text/javascript">
 $(document).ready(function() {
-    
-    /********************************************************************************************************************
-    SIMPLE ACCORDIAN STYLE MENU FUNCTION
-    ********************************************************************************************************************/   
-    /* JS menu accordeon rubr 25 */
+	
+	/********************************************************************************************************************
+	SIMPLE ACCORDIAN STYLE MENU FUNCTION
+	********************************************************************************************************************/   
+	/* JS menu accordeon rubr 25 */
 
 	$('div.accordionButton_conseil_renov').click(function() {
 		
-        $("div.accordionButton_conseil_renov").css({'background-image' : 'url(squelettes/design/fleche_home_ferme.png)'}); /* RAZ */
-        $('div.accordionContent_conseil_reno').slideUp('normal');   
+		$("div.accordionButton_conseil_renov").css({'background-image' : 'url(squelettes/design/fleche_home_ferme.png)'}); /* RAZ */
+		$('div.accordionContent_conseil_reno').slideUp('normal');   
 		
-        if ($(this).next().is(':hidden')) { /* refermer uniquement si ouvert */
-        	$(this).css({'background-image' : 'url(squelettes/design/fleche_home_ouvert.png)'}); /* RAZ */
+		if ($(this).next().is(':hidden')) { /* refermer uniquement si ouvert */
+			$(this).css({'background-image' : 'url(squelettes/design/fleche_home_ouvert.png)'}); /* RAZ */
 			$(this).next().slideDown('normal');
 		}
-    });
+	});
 
-    /********************************************************************************************************************
-    CLOSES ALL DIVS ON PAGE LOAD
-    ********************************************************************************************************************/   
-    $("div.accordionContent_conseil_reno_conseil_reno").hide();
+	/********************************************************************************************************************
+	CLOSES ALL DIVS ON PAGE LOAD
+	********************************************************************************************************************/   
+	$("div.accordionContent_conseil_reno_conseil_reno").hide();
 
 
  $(".accordion_bg_alpha").animate({"opacity": "0.8"}, 0);
@@ -60,62 +54,72 @@ $(document).ready(function() {
 </script>
 ]
 [(#ID_TRAD|=={1}|oui)
-    <INCLURE{fond=inclure/inc-javascript_home}/>
+	<INCLURE{fond=inclure/inc-javascript_home}/>
 ]
 
 </head>
 <body>
  <div id="outer_container">
-  [(#INCLURE{fond=inclure/inc-en_tete,id_rubrique,lang})][(#REM) menu de l'en-tête ]
+	[(#INCLURE{fond=inclure/inc-en_tete,id_rubrique,lang})][(#REM) menu de l'en-tête ]
 
-    <div id="fil_ariane">
-     <BOUCLE_ariane(HIERARCHIE){id_rubrique}{id_rubrique}{' <img src="squelettes/design/fleche_ariane.png" class="fleche_ariane" alt="fleche" /> '}><a href="#URL_RUBRIQUE">[(#TITRE|couper{80})]</a></BOUCLE_ariane>[ <img src="squelettes/design/fleche_ariane.png" class="fleche_ariane" alt="fleche" /> <strong class="on">(#TITRE|couper{80})</strong>]
-    </div>
-    
+	<div id="fil_ariane">
+	<BOUCLE_ariane(HIERARCHIE){id_rubrique}{id_rubrique}>
+	[(#COMPTEUR_BOUCLE|!={1}|oui) <img src="#CHEMIN{design/fleche_ariane.png}" class="fleche_ariane" alt="fleche" /> ]
+		<a href="#URL_RUBRIQUE">[(#TITRE|couper{80})]</a></BOUCLE_ariane> <img src="#CHEMIN{design/fleche_ariane.png}" class="fleche_ariane" alt="fleche" /></B_ariane> [<strong class="on">(#TITRE|couper{80})</strong>]
+	</div>
+	
 [(#ID_TRAD|=={3}|oui)
-    <INCLURE{fond=inclure/liste_page_cq_corps,env,titre}/>
-    #SET{defaut,''}
+	<INCLURE{fond=inclure/liste_page_cq_corps,env,titre}/>
+	#SET{defaut,''}
 ]
 
 [(#ID_TRAD|in_array{#LISTE{25,1000}}|oui)
-    <INCLURE{fond=inclure/corps_rubr_conseil_renov,env,titre}/>
-    #SET{defaut,''}
+	<INCLURE{fond=inclure/corps_rubr_conseil_renov,env,titre}/>
+	#SET{defaut,''}
 ]
 
 [(#ID_TRAD|=={1}|oui)
-    <INCLURE{fond=inclure/corps_rubr_home,env,titre,id_rubrique,id_trad}/>
-    #SET{defaut,''}
+	<INCLURE{fond=inclure/corps_rubr_home,env,titre,id_rubrique,id_trad}/>
+	#SET{defaut,''}
 ]
 
 
 
 [(#ID_TRAD|in_array{#LISTE{26,27,32,33,34,273}}|oui)
-    <INCLURE{fond=inclure/corps_rubr_general_sans_menu,env,titre}/>
-    #SET{defaut,''}
+	<INCLURE{fond=inclure/corps_rubr_general_sans_menu,racine_cq=#GET{racine_cq},env,titre}/>
+	#SET{defaut,''}
 ]
 [(#ID_TRAD|in_array{#LISTE{31,275,276,277,278,279,280,281,282,293,295}}|oui)
-    <INCLURE{fond=inclure/corps_rubr_general_avec_menu,env,titre}/>
-    #SET{defaut,''}
+	<INCLURE{fond=inclure/corps_rubr_general_avec_menu,racine_cq=#GET{racine_cq},env,titre}/>
+	#SET{defaut,''}
 ]
 
 [(#REM) rubrique News ]
 [(#ID_TRAD|=={271}|oui)
-    <INCLURE{fond=inclure/corps_rubr_news,env,titre,id_rubrique,id_trad}/>
-    #SET{defaut,''}
+	<INCLURE{fond=inclure/corps_rubr_news,env,titre,id_rubrique,id_trad}/>
+	#SET{defaut,''}
 ]
 
 
 [(#GET{defaut}|oui)
-    <INCLURE{fond=inclure/corps_contrat_quartier,env,id_trad,ajax}/>
+	<INCLURE{fond=inclure/corps_contrat_quartier,racine_cq=#GET{racine_cq},env,id_trad,ajax}/>
 ]
+	<!-- Pied de page -->
 
-   <!-- Pied de page -->
-   [(#INCLURE{fond=inclure/inc-footer,lang})]
+	[(#REM) Trouver le bon lien Facebook]
+	[(#REM) la définition des liens]
+	#SET{lien_facebook,#INCLURE{fond=inclure/lien_facebook}|unserialize}
+	
+	[(#REM) les secteurs des quartiers]
+	<INCLURE{fond=inclure/inc-footer,
+		lang,
+		id_rubrique=#GET{racine_cq},
+		lien_facebook=#GET{lien_facebook}} />
 
  </div><!-- #outer_container -->
 </body>
 </html>
 </BOUCLE_principale>
-    <INCLURE{fond=map,env,id_rubrique}/>
+	<INCLURE{fond=map,env,id_rubrique}/>
 	<div id="carte_en_construction">Page en construction <br />Pagina in aanbouw</div>
 <//B_principale>

@@ -1,21 +1,11 @@
 <BOUCLE_rub(RUBRIQUES){id_rubrique}>#SET{titre,#TITRE}
-#SET{racine_cq,#ID_TRAD}
-    <BOUCLE_niveler(RUBRIQUES){id_enfant}{id_trad!=3}{id_parent!=0}{tout}{lang}>
-        #SET{racine_cq,#ID_TRAD}
-        <BOUCLE_re(BOUCLE_niveler)>
-        </BOUCLE_re>
-    </BOUCLE_niveler>
-</BOUCLE_rub>
-
-
-
-<div id="corps_contrat_quartier"[ class="racine_cq_(#GET{racine_cq})"]>
+<div id="corps_contrat_quartier"[ class="racine_cq_(#ENV{racine_cq})"]>
 
 
 
    [(#REM) Modif du 25-01-2017 : afficher le CQ 5 par défaut pour la page Qu'est ce que c'est]
    <div id="colonne_cq_1">    
-       [(#INCLURE{fond=inclure/inc-liste_cq, env,racine_cq=5})][(#REM) Liste déroulante des CQ ],
+       [(#INCLURE{fond=inclure/inc-liste_cq, env,racine_cq=5})][(#REM) Liste déroulante des CQ ]
        &nbsp;
    </div> <!-- #colonne_cq_1 -->      
 
@@ -26,7 +16,7 @@
 
     <div id="ligne_au_dessus_titre"> </div>
 
-     <BOUCLE_titre_rubrique(RUBRIQUES){id_trad=#GET{racine_cq}}{lang}>
+     <BOUCLE_titre_rubrique(RUBRIQUES){id_trad=#ENV{racine_cq}}{lang}>
        <h1 class="general_titre_1">[<span class="titre_en_gras"> (#TITRE|supprimer_numero)</class>]</h1>
      </BOUCLE_titre_rubrique>
 
@@ -38,7 +28,7 @@
 
    <div id="colonne_cq_3">
     [(#REM)MENU propre aux CQ ]
-    <INCLURE{fond=inclure/inc-menu_pour_cq,env,racine_cq=#GET{racine_cq}}>
+    <INCLURE{fond=inclure/inc-menu_pour_cq,env}>
    </div> <!-- #colonne_cq_3 -->
 
 
@@ -103,3 +93,5 @@
    </div> <!-- #colonne_cq_2 -->
 
    </div> <!-- #corps_contrat_quartier -->
+
+</BOUCLE_rub>
