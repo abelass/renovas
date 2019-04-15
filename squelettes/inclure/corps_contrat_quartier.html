@@ -8,7 +8,7 @@
 
 <div id="corps_contrat_quartier"[ class="racine_cq_(#ENV{racine_cq})"]>
 
-   <div id="colonne_cq_1">    
+   <div id="colonne_cq_1">
 
    [(#ENV{racine_cq}?{
 
@@ -18,7 +18,7 @@
 
    })]
 
-   </div> <!-- #colonne_cq_1 -->      
+   </div> <!-- #colonne_cq_1 -->
 
 
 
@@ -54,7 +54,7 @@
 
    <div id="colonne_cq_3">
 
-   
+
 
     [(#REM)MENU propre aux CQ ]
 
@@ -68,21 +68,21 @@
 
 
 
-    
+
 
     <div id="colonne_cq_4">
 
-    
+
 
      [(#INCLURE{fond=inclure/inc-choix_map_diapo_pic,id_rubrique,env})]
 
-    
+
 
      <div id="colonne_cq_5">
 
 
 
-    <h2 class="cq_titre_h2">#GET{titre}</h2>
+    <h2 class="cq_titre_h2">#ENV{titre}</h2>
 
     [(#REM) Si article unique afficher ARTICLE complet. Sinon, afficher les résumés]
 
@@ -90,15 +90,15 @@
 
 
 
-    [(#REM) Plusieurs articles ] 
+    [(#REM) Plusieurs articles ]
 
-    
 
-    
 
-     
+
+
+
 <!-- plus ici -->
-    
+
 
     [(#GET{se}|?{
         #INCLURE{fond=inclure/inc-corps_contrat_quartier_se,env},
@@ -118,12 +118,12 @@
         [<div class="#EDIT{ps} ps surlignable"><hr />(#PS|image_reduire{390,*})</div>]
         [(#INCLURE{fond=inclure/documents,id_article, env})] [(#REM) Gestion du portfolio et des documents ]
 		[<div class="notes"><hr />(#NOTES)</div>]
-            
+
 
        </BOUCLE_article>
 
     <//B_article_si_plusieurs_articles>
-       
+
 
      </div> <!-- #colonne_cq_5 -->
 
@@ -131,7 +131,7 @@
 
        <!--  Si on est en "Batiment" (=mot clé 4), afficher les vignettes dans le colonne de droite -->
 
-       <BOUCLE_pour_portfolio(RUBRIQUES){id_rubrique}{0,1}{id_mot=4}>      
+       <BOUCLE_pour_portfolio(RUBRIQUES){id_rubrique}{0,1}{id_mot=4}>
         [(#INCLURE{fond=inclure/inc_vignettes_colonne_6,id_article, env})] [(#REM) = Vignettes dans la colonne de Gauche ]
        </BOUCLE_pour_portfolio>
 

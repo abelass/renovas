@@ -26,17 +26,17 @@
 [(#ID_TRAD|=={25}|oui)
 <script type="text/javascript">
 $(document).ready(function() {
-	
+
 	/********************************************************************************************************************
 	SIMPLE ACCORDIAN STYLE MENU FUNCTION
-	********************************************************************************************************************/   
+	********************************************************************************************************************/
 	/* JS menu accordeon rubr 25 */
 
 	$('div.accordionButton_conseil_renov').click(function() {
-		
+
 		$("div.accordionButton_conseil_renov").css({'background-image' : 'url(squelettes/design/fleche_home_ferme.png)'}); /* RAZ */
-		$('div.accordionContent_conseil_reno').slideUp('normal');   
-		
+		$('div.accordionContent_conseil_reno').slideUp('normal');
+
 		if ($(this).next().is(':hidden')) { /* refermer uniquement si ouvert */
 			$(this).css({'background-image' : 'url(squelettes/design/fleche_home_ouvert.png)'}); /* RAZ */
 			$(this).next().slideDown('normal');
@@ -45,7 +45,7 @@ $(document).ready(function() {
 
 	/********************************************************************************************************************
 	CLOSES ALL DIVS ON PAGE LOAD
-	********************************************************************************************************************/   
+	********************************************************************************************************************/
 	$("div.accordionContent_conseil_reno_conseil_reno").hide();
 
 
@@ -67,7 +67,7 @@ $(document).ready(function() {
 	[(#COMPTEUR_BOUCLE|!={1}|oui) <img src="#CHEMIN{design/fleche_ariane.png}" class="fleche_ariane" alt="fleche" /> ]
 		<a href="#URL_RUBRIQUE">[(#TITRE|couper{80})]</a></BOUCLE_ariane> <img src="#CHEMIN{design/fleche_ariane.png}" class="fleche_ariane" alt="fleche" /></B_ariane> [<strong class="on">(#TITRE|couper{80})</strong>]
 	</div>
-	
+
 [(#ID_TRAD|=={3}|oui)
 	<INCLURE{fond=inclure/liste_page_cq_corps,env,titre}/>
 	#SET{defaut,''}
@@ -102,14 +102,14 @@ $(document).ready(function() {
 
 
 [(#GET{defaut}|oui)
-	<INCLURE{fond=inclure/corps_contrat_quartier,racine_cq=#GET{racine_cq},env,id_trad,ajax}/>
+	<INCLURE{fond=inclure/corps_contrat_quartier,racine_cq=#GET{racine_cq},titre,env,id_trad,ajax}/>
 ]
 	<!-- Pied de page -->
 
 	[(#REM) Trouver le bon lien Facebook]
 	[(#REM) la définition des liens]
 	#SET{lien_facebook,#INCLURE{fond=inclure/lien_facebook}|unserialize}
-	
+
 	[(#REM) les secteurs des quartiers]
 	<INCLURE{fond=inclure/inc-footer,
 		lang,
