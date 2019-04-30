@@ -1,0 +1,147 @@
+[(#REM)Rubrique socio-economique]
+
+<BOUCLE_mot(MOTS){id_rubrique}{id_mot=6}>
+    #SET{se,oui} #SET{id_mot,#ENV{id_mot,-1}}
+</BOUCLE_mot>
+
+
+
+<div id="corps_contrat_quartier"[ class="racine_cq_(#ENV{racine_cq})"]>
+
+   <div id="colonne_cq_1">
+
+   [(#ENV{racine_cq}?{
+
+       [(#INCLURE{fond=inclure/inc-liste_cq, env,racine_cq=#ENV{racine_cq}})][(#REM) Liste déroulante des CQ ],
+
+       &nbsp;
+
+   })]
+
+   </div> <!-- #colonne_cq_1 -->
+
+
+
+   <div id="colonne_cq_2">
+
+    <div id="ligne_au_dessus_titre"> </div>
+
+
+
+     <BOUCLE_titre_rubrique(RUBRIQUES){id_trad=#ENV{racine_cq}}{lang}>
+
+     <h1 class="cq_titre_1">
+       [<span class="titre_en_gras">(#DESCRIPTIF)</class>]
+     </h1>
+
+     </BOUCLE_titre_rubrique>
+
+
+
+    </BOUCLE_titre_si_plusieurs_articles>
+
+    </B_titre_si_plusieurs_articles>
+
+
+
+    <div id="logo_cq_">
+
+    [<img src="(#CHEMIN{design/logos_cq/#ENV{racine_cq}.jpg})" />]
+
+   </div>
+
+
+
+   <div id="colonne_cq_3">
+
+
+
+    [(#REM)MENU propre aux CQ ]
+
+
+
+    <INCLURE{fond=inclure/inc-menu_pour_cq,env}>
+
+
+
+   </div> <!-- #colonne_cq_3 -->
+
+
+
+
+
+    <div id="colonne_cq_4">
+
+
+
+     [(#INCLURE{fond=inclure/inc-choix_map_diapo_pic,id_rubrique,env})]
+
+
+
+     <div id="colonne_cq_5">
+
+
+
+    <h2 class="cq_titre_h2">[(#ENV{titre}|supprimer_numero)]</h2>
+
+    [(#REM) Si article unique afficher ARTICLE complet. Sinon, afficher les résumés]
+
+    <BOUCLE_article_si_plusieurs_articles(ARTICLES){id_rubrique}{1,1}>
+
+
+
+    [(#REM) Plusieurs articles ]
+
+
+
+
+
+
+<!-- plus ici -->
+
+
+    [(#GET{se}|?{
+        #INCLURE{fond=inclure/inc-corps_contrat_quartier_se,env},
+        #INCLURE{fond=inclure/inc-corps_contrat_quartier_defaut,env},
+        })]
+
+
+
+    </BOUCLE_article_si_plusieurs_articles>
+
+    </B_article_si_plusieurs_articles>
+
+       <BOUCLE_article(ARTICLES){id_rubrique}{id_mot ?=#GET{id_mot}}>
+
+        [<div class="#EDIT{chapo} chapo surlignable">(#CHAPO|image_reduire{390,*})</div>]
+        [<div class="#EDIT{texte} texte surlignable">(#TEXTE|image_reduire{390,*})</div>]
+        [<div class="#EDIT{ps} ps surlignable"><hr />(#PS|image_reduire{390,*})</div>]
+        [(#INCLURE{fond=inclure/documents,id_article, env})] [(#REM) Gestion du portfolio et des documents ]
+		[<div class="notes"><hr />(#NOTES)</div>]
+
+
+       </BOUCLE_article>
+
+    <//B_article_si_plusieurs_articles>
+
+
+     </div> <!-- #colonne_cq_5 -->
+
+     <div id="colonne_cq_6">
+
+       <!--  Si on est en "Batiment" (=mot clé 4), afficher les vignettes dans le colonne de droite -->
+
+       <BOUCLE_pour_portfolio(RUBRIQUES){id_rubrique}{0,1}{id_mot=4}>
+        [(#INCLURE{fond=inclure/inc_vignettes_colonne_6,id_article, env})] [(#REM) = Vignettes dans la colonne de Gauche ]
+       </BOUCLE_pour_portfolio>
+
+       <!--  Afficher des news si nécessaire -->
+       <INCLURE{fond=inclure/inc_news_colonne_6,env}>
+
+     </div> <!-- #colonne_cq_6 -->
+
+    </div> <!-- #colonne_cq_4 -->
+
+   </div> <!-- #colonne_cq_2 -->
+
+   </div> <!-- #corps_contrat_quartier -->

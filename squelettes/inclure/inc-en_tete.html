@@ -1,0 +1,42 @@
+  <div id="head_container">
+
+   [(#ENV{lang}|=={fr}|oui)
+   <div id="head_container_gauche">
+     <a href="#URL_RUBRIQUE{1}" class="back_home" title="<:accueil_site:>"></a>
+   </div> <!-- #head_container_gauche -->
+
+   <div id="head_container_droite">
+    <div id="ligne_head_1"><a href="#URL_RUBRIQUE{3}">Revitalisation des quartiers</a> </div>
+    <div id="recherche_zone">#FORMULAIRE_RECHERCHE</div>
+
+    <div id="ligne_head_2"> <a href="#URL_RUBRIQUE{25}">Conseil en rénovation et énergie</a> <a href="#URL_RUBRIQUE{27}">Réseau Habitat</a> </div>
+    <div id="ligne_head_3"><a href="[(#URL_RUBRIQUE{264}|parametre_url{formulaire_action,map}|parametre_url{op,#LISTE{7}})]" target="blank">Carte interactive de Schaerbeek</a> </div>
+
+    <div id="ligne_head_4"><div id="ligne_head_4_txt"><a href="#URL_RUBRIQUE{293}">Qui est RenovaS ?</a> <a href="#URL_RUBRIQUE{32}">Contact</a> <a href="spip.php?rubrique33">Liens utiles</a> <a href="#URL_RUBRIQUE{34}">Offres d'emploi</a> <a href="#URL_RUBRIQUE{271}">News</a> </div></div>
+    <div id="boutons_header">
+     <a href="#" onclick="imprime(); return false" title="Imprimer la page" class="bouton_imprime"> </a>
+     <div class="bouton_resize"><a href="#" class="decreaseFont" title="Réduire">A</a> <!-- <a class="resetFont">-</a> --> <a href="#" class="increaseFont" title="Augmenter">A</a></div>
+	]
+   [(#ENV{lang}|=={nl}|oui)
+   <div id="head_container_gauche">
+     <a href="#URL_RUBRIQUE{2}" class="back_home" title="<:accueil_site:>"></a>
+   </div> <!-- #head_container_gauche -->
+
+   <div id="head_container_droite">
+    <div id="ligne_head_1"><a href="#URL_RUBRIQUE{4}">Herwaardering van de wijken</a> </div>
+    <div id="recherche_zone">#FORMULAIRE_RECHERCHE</div>
+
+    <div id="ligne_head_2"><a href="#URL_RUBRIQUE{28}">Renovatie- en energieadvies</a> <a href="#URL_RUBRIQUE{30}">Netwerk Wonen</a> </div>
+    <div id="ligne_head_3"><a href="[(#URL_RUBRIQUE{270}|parametre_url{formulaire_action,map}|parametre_url{op,#LISTE{7}})]" target="blank">Interactieve kaart van Schaarbeek</a> </div>
+
+    <div id="ligne_head_4"><div id="ligne_head_4_txt"><a href="#URL_RUBRIQUE{294}">Wie is RenovaS ?</a> <a href="#URL_RUBRIQUE{36}">Contact</a> <a href="#URL_RUBRIQUE{37}">Nuttige links</a> <a href="#URL_RUBRIQUE{38}">Jobs</a> <a href="#URL_RUBRIQUE{272}">News</a> </div></div>
+    <div id="boutons_header">
+     <a href="#" onclick="imprime(); return false" title="Print deze pagina" class="bouton_imprime"> </a>
+     <div class="bouton_resize"><a href="#" class="decreaseFont" title="Verminderen">A</a>  <!-- <a class="resetFont"><a class="resetFont">-</a> --> <a href="#" class="increaseFont" title="verhogen">A</a></div>
+    ]
+
+<INCLURE{fond=inclure/menu_langues,env}/>
+    </div> <!-- #boutons_header -->
+
+   </div> <!-- #head_container_droite -->
+  </div> <!-- #head_container -->

@@ -1,0 +1,27 @@
+<div id="liste_page_cq_corps">
+    <div class="ligne_page_sur_titre"> </div>
+
+     <h1 class="liste_page_cq_titre_1">[(#TITRE|supprimer_numero)]</h1>
+     
+         <div class="liste_page_cq cq_qu_est_ce"><multi>[fr]<a href="spip.php?rubrique295">Qu'est-ce que c'est ?</a> [nl]<a href="spip.php?rubrique296">Wat is dat?</a></multi></div>
+
+
+    <BOUCLE_cq(RUBRIQUES){id_trad=3}{lang}>
+      <BOUCLE_contrats(RUBRIQUES){id_parent}{par num titre,titre}>   
+    
+       <div class="liste_page_cq liste_cq_#ID_RUBRIQUE">
+
+    
+           <BOUCLE_1_ere_rubrique(RUBRIQUES) {id_parent} {par num titre}{0,1}>
+            <a href="#URL_RUBRIQUE">
+           </BOUCLE_1_ere_rubrique>
+           
+           [(#TITRE|supprimer_numero)]</a></div>
+
+    
+      </BOUCLE_contrats>
+    </BOUCLE_cq>
+
+
+   </div> <!-- liste_cq_corps -->
+

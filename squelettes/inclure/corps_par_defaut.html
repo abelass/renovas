@@ -1,0 +1,193 @@
+<BOUCLE_rub(RUBRIQUES){id_rubrique}>#SET{titre,#TITRE}
+
+#SET{racine_cq,#ID_TRAD}
+
+    <BOUCLE_niveler(RUBRIQUES){id_enfant}{id_trad!=3}{id_parent!=0}{tout}{lang}>
+
+        #SET{racine_cq,#ID_TRAD}
+
+        <BOUCLE_re(BOUCLE_niveler)>
+
+        </BOUCLE_re>
+
+    </BOUCLE_niveler>
+
+</BOUCLE_rub>
+
+
+
+[(#REM)Rubrique socio-economique]
+
+
+
+
+<BOUCLE_mot(MOTS){id_rubrique}{id_mot=6}>
+    #SET{se,oui} #SET{id_mot,#ENV{id_mot,-1}}
+</BOUCLE_mot>
+
+
+
+<div id="corps_contrat_quartier"[ class="racine_cq_(#GET{racine_cq})"]>
+
+   <div id="colonne_cq_1">    
+
+   [(#GET{racine_cq}?{
+
+       [(#INCLURE{fond=inclure/inc-liste_cq, env,racine_cq=#GET{racine_cq}})][(#REM) Liste déroulante des CQ ],
+
+       &nbsp;
+
+   })]
+
+   </div> <!-- #colonne_cq_1 -->      
+
+
+
+   <div id="colonne_cq_2">
+
+    <div id="ligne_au_dessus_titre"> </div>
+
+
+
+     <BOUCLE_titre_rubrique(RUBRIQUES){id_trad=#GET{racine_cq}}{lang}>
+
+     <h1 class="cq_titre_1">
+       <BOUCLE_est_ce_cq(RUBRIQUES){id_enfant}{id_trad=3}><:contrat_quartier_durable_singulier:></BOUCLE_est_ce_cq>
+        [<span class="titre_en_gras"> (#TITRE|supprimer_numero)</class>]
+     </h1>
+
+     </BOUCLE_titre_rubrique>
+
+
+
+    </BOUCLE_titre_si_plusieurs_articles>
+
+    </B_titre_si_plusieurs_articles>
+
+
+
+    <div id="logo_cq_">
+
+    [<img src="(#CHEMIN{design/logos_cq/#GET{racine_cq}.jpg})" />]
+
+   </div>
+
+
+
+   <div id="colonne_cq_3">
+
+   
+
+    [(#REM)MENU propre aux CQ ]
+
+
+
+    <INCLURE{fond=inclure/inc-menu_pour_cq,env,racine_cq=#GET{racine_cq}}>
+
+
+
+   </div> <!-- #colonne_cq_3 -->
+
+
+
+    
+
+    <div id="colonne_cq_4">
+
+    
+
+     [(#INCLURE{fond=inclure/inc-choix_map_diapo_pic,id_rubrique,env})]
+
+    
+
+     <div id="colonne_cq_5">
+
+
+
+    <BOUCLE_article_pour_titre(ARTICLES){id_rubrique}{0,1}>
+    	<h2 class="cq_titre_h2">#TITRE</h2>
+    </BOUCLE_article_pour_titre>
+
+
+    [(#REM) Si article unique afficher ARTICLE complet. Sinon, afficher les résumés]
+
+    <BOUCLE_article_si_plusieurs_articles(ARTICLES){id_rubrique}{1,1}>
+
+
+
+    [(#REM) Plusieurs articles ] 
+
+    
+
+    
+
+     
+
+    <BOUCLE_chapo_du_haut(RUBRIQUES){id_rubrique}>
+
+     [<div class="#EDIT{texte} chapo surlignable">(#TEXTE|image_reduire{390,*})</div>]
+
+    </BOUCLE_chapo_du_haut>
+
+    
+
+    [(#GET{se}|?{
+
+        #INCLURE{fond=inclure/inc-corps_contrat_quartier_se,env},
+
+        #INCLURE{fond=inclure/inc-corps_contrat_quartier_defaut,env},
+
+        })]
+
+
+
+    </BOUCLE_article_si_plusieurs_articles>
+
+    </B_article_si_plusieurs_articles>
+
+       <BOUCLE_article(ARTICLES){id_rubrique}{id_mot ?=#GET{id_mot}}>
+
+        [<div class="#EDIT{chapo} chapo surlignable">(#CHAPO|image_reduire{390,*})</div>]
+        [<div class="#EDIT{texte} texte surlignable">(#TEXTE|image_reduire{390,*})</div>]
+        [<div class="#EDIT{ps} ps surlignable"><hr />(#PS|image_reduire{390,*})</div>]
+        [(#INCLURE{fond=inclure/documents,id_article, env})] [(#REM) Gestion du portfolio et des documents ]
+		[<div class="notes"><hr />(#NOTES)</div>]
+            
+
+       </BOUCLE_article>
+
+       
+
+    <//B_article_si_plusieurs_articles>
+
+
+
+       
+
+     </div> <!-- #colonne_cq_5 -->
+
+
+
+
+
+     <div id="colonne_cq_6">
+
+       <!-- XXXXXXXXXXXXXXXXXXXX Si on est en "Batiment" (=mot clé 4), afficher les vignettes dans le colonne de droite -->
+
+       <BOUCLE_pour_portfolio(RUBRIQUES){id_rubrique}{0,1}{id_mot=4}>      
+
+        [(#INCLURE{fond=inclure/inc_vignettes_colonne_6,id_article, env})] [(#REM) = Vignettes dans la colonne de Gauche ]
+
+       </BOUCLE_pour_portfolio>
+
+
+
+     </div> <!-- #colonne_cq_6 -->
+
+
+
+    </div> <!-- #colonne_cq_4 -->
+
+   </div> <!-- #colonne_cq_2 -->
+
+   </div> <!-- #corps_contrat_quartier -->

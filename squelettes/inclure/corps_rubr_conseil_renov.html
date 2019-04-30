@@ -1,0 +1,24 @@
+    <div id="corps_rubr_conseil_renov">
+ 
+    <div class="ligne_page_sur_titre"> </div>
+
+     <h1 class="liste_page_cq_titre_1">[(#TITRE|supprimer_numero)]</h1>
+
+
+    <div id="menu_accordeon_home">
+
+       <BOUCLE_article_menu_accordeon(ARTICLES) {id_rubrique} {par num titre}>
+        [<div class="accordionButton_conseil_renov">(#TITRE|supprimer_numero)</div>]
+        <div style="display: none;" class="accordionContent_conseil_reno">
+             <div class="accordion_txt_zone_conseil_renov">
+              [<div class="#EDIT{chapo} chapo surlignable">(#CHAPO|image_reduire{750,*})</div>]
+              [<div class="#EDIT{texte} texte surlignable">(#TEXTE|image_reduire{750,*})</div>]
+              
+              [<br class="float_stop" />(#INCLURE{fond=inclure/documents,id_article, env})] [(#REM) Gestion du portfolio et des documents ]
+             </div></div>
+       </BOUCLE_article_menu_accordeon>
+
+    </div>
+
+
+   </div>

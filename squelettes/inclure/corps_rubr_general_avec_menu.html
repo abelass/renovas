@@ -1,0 +1,97 @@
+<BOUCLE_rub(RUBRIQUES){id_rubrique}>#SET{titre,#TITRE}
+<div id="corps_contrat_quartier"[ class="racine_cq_(#ENV{racine_cq})"]>
+
+
+
+   [(#REM) Modif du 25-01-2017 : afficher le CQ 5 par défaut pour la page Qu'est ce que c'est]
+   <div id="colonne_cq_1">    
+       [(#INCLURE{fond=inclure/inc-liste_cq, env,racine_cq=5})][(#REM) Liste déroulante des CQ ]
+       &nbsp;
+   </div> <!-- #colonne_cq_1 -->      
+
+
+
+
+   <div id="colonne_cq_2">
+
+    <div id="ligne_au_dessus_titre"> </div>
+
+     <BOUCLE_titre_rubrique(RUBRIQUES){id_trad=#ENV{racine_cq}}{lang}>
+       <h1 class="general_titre_1">[<span class="titre_en_gras"> (#TITRE|supprimer_numero)</class>]</h1>
+     </BOUCLE_titre_rubrique>
+
+
+    </BOUCLE_titre_si_plusieurs_articles>
+
+    </B_titre_si_plusieurs_articles>
+
+
+   <div id="colonne_cq_3">
+    [(#REM)MENU propre aux CQ ]
+    <INCLURE{fond=inclure/inc-menu_pour_cq,env}>
+   </div> <!-- #colonne_cq_3 -->
+
+
+    <div id="colonne_cq_4">
+     <!-- pas de zone pour carte etc. -->
+
+     <div id="colonne_general_5">
+
+      <BOUCLE_article_pour_titre(ARTICLES){id_rubrique}{0,1}><h2 class="general_titre_h2">#TITRE</h2></BOUCLE_article_pour_titre>
+
+    [(#REM) Si article unique afficher ARTICLE complet. Sinon, afficher les résumés]
+
+    <BOUCLE_article_si_plusieurs_articles(ARTICLES){id_rubrique}{1,1}>
+
+
+
+    [(#REM) Plusieurs articles ] 
+
+    <BOUCLE_chapo_du_haut(RUBRIQUES){id_rubrique}>
+
+     [<div class="#EDIT{texte} chapo surlignable">(#TEXTE|image_reduire{390,*})</div>]
+
+    </BOUCLE_chapo_du_haut>
+
+        #INCLURE{fond=inclure/inc-corps_contrat_quartier_defaut,env},
+
+    </BOUCLE_article_si_plusieurs_articles>
+
+    </B_article_si_plusieurs_articles>
+
+       <BOUCLE_article(ARTICLES){id_rubrique}{id_mot ?=#GET{id_mot}}>
+
+        [<div class="#EDIT{chapo} chapo surlignable">(#CHAPO|image_reduire{390,*})</div>]
+        [<div class="#EDIT{texte} texte surlignable">(#TEXTE|image_reduire{390,*})</div>]
+        [<div class="#EDIT{ps} ps surlignable"><hr />(#PS|image_reduire{390,*})</div>]
+        [(#INCLURE{fond=inclure/documents,id_article, env})] [(#REM) Gestion du portfolio et des documents ]
+		[<div class="notes"><hr />(#NOTES)</div>]
+
+       </BOUCLE_article>
+
+    <//B_article_si_plusieurs_articles>
+  
+
+     </div> <!-- #colonne_cq_5 -->
+
+
+     <div id="colonne_general_6">
+
+       <!-- XXXXXXXXXXXXXXXXXXXX Si on est en "Batiment" (=mot clé 4), afficher les vignettes dans le colonne de droite -->
+
+       <BOUCLE_pour_portfolio(RUBRIQUES){id_rubrique}{0,1}{id_mot=4}>      
+
+        [(#INCLURE{fond=inclure/inc_vignettes_colonne_6,id_article, env})] [(#REM) = Vignettes dans la colonne de Gauche ]
+
+       </BOUCLE_pour_portfolio>
+
+
+     </div> <!-- #colonne_cq_6 -->
+
+    </div> <!-- #colonne_cq_4 -->
+
+   </div> <!-- #colonne_cq_2 -->
+
+   </div> <!-- #corps_contrat_quartier -->
+
+</BOUCLE_rub>

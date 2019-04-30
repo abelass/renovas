@@ -1,0 +1,112 @@
+<script type="text/javascript">
+$(document).ready(function() {
+    
+    /********************************************************************************************************************
+    SIMPLE ACCORDIAN STYLE MENU FUNCTION
+    ********************************************************************************************************************/   
+    /* JS menu accordeon home */
+	$('div.accordionButton').click(function() {
+		
+        $("div.accordionButton").css({'background-image' : 'url(#CHEMIN{design/fleche_home_ferme.png})'}); /* RAZ */
+        $('div.accordionContent').slideUp('normal');
+		
+        if ($(this).next().is(':hidden')) { /* refermer uniquement si ouvert */
+			$(this).css({'background-image' : 'url(#CHEMIN{design/fleche_home_ouvert.png})'}); /* RAZ */
+			$(this).next().slideDown('normal');
+		}
+    });
+
+	
+    /********************************************************************************************************************
+    CLOSES ALL DIVS ON PAGE LOAD
+    ********************************************************************************************************************/   
+    $("div.accordionContent").hide();
+
+
+ $(".accordion_bg_alpha").animate({"opacity": "0.8"}, 0);
+});
+</script>
+
+
+
+
+
+<!-- Diapo -->
+<link rel="stylesheet" type="text/css" href="#CHEMIN{javascript/ad_gallery_pour_cq/jquery.ad-gallery_760.css}"> <!-- CSS diapo spécifiques -->
+  <script type="text/javascript" src="#CHEMIN{javascript/ad_gallery/lib/jquery.ad-gallery.js}"></script>
+  <script type="text/javascript">
+  $(function() {
+var galleries = $('.ad-gallery').adGallery({
+  width: false, // Width of the image, set to false and it will read the CSS width
+  height: false,   // Height of the image, set to false and it will read the CSS height
+  thumb_opacity: 1, // (1 removes fade effect)
+
+  // Whether or not the url hash should be updated to the current image
+  update_window_hash: false, 
+  animate_first_image: false,
+
+  animation_speed: 550, 
+  // Can you navigate by clicking on the left/right on the image?
+  display_next_and_prev: false, 
+  // Are you allowed to scroll the thumb list?
+  display_back_and_forward: true, 
+  // If 0, it jumps the width of the container
+  scroll_jump: 0, 
+  slideshow: {
+    enable: true,
+    autostart: true,
+    speed: 2500,
+    start_label: 'Start',
+    stop_label: 'Stop',
+    // Should the slideshow stop if the user scrolls the thumb list?
+    stop_on_scroll: true, 
+    // Wrap around the countdown
+    countdown_prefix: '(', 
+    countdown_sufix: ')',
+    onStart: function() {
+      // Do something wild when the slideshow starts
+    },
+    onStop: function() {
+      // Do something wild when the slideshow stops
+    }
+  },
+  // or slide-hori 'slide-vert', 'resize', 'fade', 'none' or false
+  effect: 'fade', 
+  // Move to next/previous image with keyboard arrows?
+  enable_keyboard_move: true, 
+  // If set to false, you can't go from the last image to the first, and vice versa
+  cycle: true, 
+  // All hooks has the AdGallery objects as 'this' reference
+  hooks: {
+    // If you don't want AD Gallery to handle how the description
+    // should be displayed, add your own hook. The passed image
+    // image object contains all you need
+  /*  displayDescription: function(image) {
+      alert(image.title +" - "+ image.desc);
+    }*/
+  },
+  // All callbacks has the AdGallery objects as 'this' reference
+  callbacks: {
+    // Executes right after the internal init, can be used to choose which images
+    // you want to preload
+    init: function() {
+    
+    },
+    // This gets fired right after the new_image is fully visible
+    afterImageVisible: function() {
+		
+		
+		
+	}
+  }
+});
+
+// Set image description
+/*some_img.data('ad-desc', 'This is my description!');*/
+
+// Change effect on the fly
+galleries[0].settings.effect = 'fade';   
+  });
+</script>
+
+<!-- #diapo -->

@@ -1,0 +1,70 @@
+  <div class="float_stop">&nbsp;</div>
+  <div id="footer_renovas"> <!-- footer -->
+    
+   [(#LANG|=={fr}|oui)       
+   <div id="footer_renovas_ligne_1">
+  
+    <a href="#URL_RUBRIQUE{293}">&copy; RenovaS asbl</a>
+    <a href="#URL_RUBRIQUE{32}">Contact</a>
+    <a href="#URL_RUBRIQUE{273}">Mentions légales</a>
+   </div>
+   
+   <div id="footer_renovas_ligne_2_1">
+	<a href="http://www.schaerbeek.be/" target="_blank"><img src="#CHEMIN{design/commune_de_schaerbeek.png}" /></a>
+	<a href="http://www.bruxelles.irisnet.be/" target="_blank"><img src="#CHEMIN{design/region_bruxelles_capitale.png}" /></a>
+   </div>
+   
+   <div id="footer_renovas_ligne_2_2">
+	Avec le soutien de<br />
+     la <a href="http://www.schaerbeek.be/" target="_blank">Commune de Schaerbeek</a><br />
+    et de la <a href="http://www.bruxelles.irisnet.be/" target="_blank">Région de Bruxelles-Capitale</a>
+   </div>
+
+   <div id="footer_renovas_ligne_2_3">
+	<a href="http://www.lereseauhabitat.net/" target="_blank"><img src="#CHEMIN{design/reseau_habitat.png}" /></a>
+   </div>
+   
+   <div id="footer_renovas_ligne_2_4"><br />
+   RenovaS est membre du <a href="http://www.lereseauhabitat.net/" target="_blank">Réseau Habitat</a>
+   </div>]
+
+
+
+
+
+   [(#LANG|=={nl}|oui)       
+   <div id="footer_renovas_ligne_1">
+    <a href="#URL_RUBRIQUE{294}">&copy; RenovaS asbl</a>
+    <a href="#URL_RUBRIQUE{36}">Contact</a>
+    <a href="#URL_RUBRIQUE{274}">Wettelijke voorschriften</a>
+   </div>
+   
+   <div id="footer_renovas_ligne_2_1">
+    <a href="http://www.schaerbeek.be/" target="_blank"><img src="#CHEMIN{design/commune_de_schaerbeek.png}" /></a>
+    <a href="http://www.bruxelles.irisnet.be/" target="_blank"><img src="#CHEMIN{design/region_bruxelles_capitale.png}" /></a>
+   </div>
+   
+   <div id="footer_renovas_ligne_2_2">
+    Met de steun van<br />
+     de <a href="http://www.schaerbeek.be/" target="_blank">Gemeente Schaarbeek</a><br />
+    en het <a href="http://www.bruxelles.irisnet.be/" target="_blank">Brussels Hoofdstedelijk Geweest</a>
+   </div>
+   
+   <div id="footer_renovas_ligne_2_3">
+	<a href="http://www.lereseauhabitat.net/" target="_blank"><img src="#CHEMIN{design/reseau_habitat.png}" /></a>
+   </div>
+   
+   <div id="footer_renovas_ligne_2_4"><br />
+   RenovaS is lid van het <a href="http://www.lereseauhabitat.net/" target="_blank"> Netwerk Wonen</a>
+   </div>]
+
+[(#ENV{lien_facebook}|table_valeur{#ID_RUBRIQUE}|?{
+  #SET{lien_facebook,#ENV{lien_facebook}|table_valeur{#ID_RUBRIQUE}},
+  #SET{lien_facebook,#ENV{lien_facebook}|table_valeur{defaut}}
+})]
+
+[<div class="sticky_fb_button">
+  <a href="(#GET{lien_facebook})" target="_blank"><span class="st_fb_butt"><img src="#CHEMIN{design/fb_button.png}" alt="Facebook" /></span></a> 
+</div>]
+
+</div> <!-- #footer -->

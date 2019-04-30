@@ -1,0 +1,14 @@
+<BOUCLE_rub(RUBRIQUES){id_rubrique}{tout}>#SET{titre,#TITRE}
+#SET{racine,#ID_TRAD}
+	<BOUCLE_niveler(RUBRIQUES)
+		{id_enfant}
+		{id_trad!=#ENV{id_base,3}}
+		{id_parent!=0}
+		{tout}
+		{lang}>
+		#SET{racine,#ID_TRAD}
+		<BOUCLE_re(BOUCLE_niveler)>
+		</BOUCLE_re>
+	</BOUCLE_niveler>
+</BOUCLE_rub>
+#GET{racine}
